@@ -1,10 +1,12 @@
 plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
     id 'java'
-    id 'application'
 }
 
-mainClassName = 'familiar.service.CoreApplication'
-
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
 group 'familiar'
 version '0.0.1-SNAPSHOT'
 
@@ -16,5 +18,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.springframework.boot:spring-boot-starter'
     implementation project(':domain')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
