@@ -13,6 +13,4 @@ public class User {
     private String name;
     private String password;
     private LocalDateTime created;
-    private List<Campaign> campaigns;
-    private List<RPGCharacter> characters;
 }

@@ -11,6 +11,7 @@ public class Campaign {
 
     private Long id;
     private List<User> players;
+    private List<User> masters;
     private List<RPGCharacter> characters;
     private LocalDateTime created;
     private List<Session> sessions;
