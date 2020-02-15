@@ -10,11 +10,12 @@ import java.util.List;
 public class Campaign {
 
     private Long id;
+    private String name;
+    private World world;
     private List<User> players;
     private List<User> masters;
     private List<RPGCharacter> characters;
     private LocalDateTime created;
     private List<Session> sessions;
     private List<Note> notes;
-
 }
