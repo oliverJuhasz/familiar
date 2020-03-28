@@ -5,9 +5,9 @@ import familiar.domain.character.witcher.wSkills;
 import java.util.List;
 
 public abstract class wProfession {
-    private wProfessionSkills definingSkill;
-    private int vigor;
-    private List<wSkills> skillSet;
-    private int magicalPerksTEMP;
-    private int startingGearTEMP;
+    protected wProfessionSkills definingSkill;
+    protected int vigor;
+    protected List<wSkills> skillSet;
+    protected int magicalPerksTEMP;
+    protected int startingGearTEMP;
 }
