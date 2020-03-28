@@ -4,10 +4,10 @@ import java.util.Collections;
 import java.util.Map;
 
 public enum wRace {
-    witcher(Map.of(wAbilities.Empathy, -4, wAbilities.Reflexes, 1), Map.of(wSkills.Awareness, 1)),
-    human(Map.of(wAbilities.Empathy, -4), Map.of(wSkills.Deduction, 1)),
-    dwarf(Map.of(), Map.of(wSkills.Physique, 1, wSkills.Business, 1)),
-    elf(Map.of(), Map.of(wSkills.FineArts, 1, wSkills.Archery, 2));
+    WITCHER(Map.of(wAbilities.EMPATHY, -4, wAbilities.REFLEXES, 1), Map.of(wSkills.AWARENESS, 1)),
+    HUMAN(Map.of(wAbilities.EMPATHY, -4), Map.of(wSkills.DEDUCTION, 1)),
+    DWARF(Map.of(), Map.of(wSkills.PHYSIQUE, 1, wSkills.BUSINESS, 1)),
+    ELF(Map.of(), Map.of(wSkills.FINEARTS, 1, wSkills.ARCHERY, 2));
 
 
     wRace(Map<wAbilities, Integer> abilities, Map<wSkills, Integer> skills) {
