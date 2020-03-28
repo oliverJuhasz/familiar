@@ -6,8 +6,8 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
-public class DnDCharacter extends RPGCharacter {
+
+public class DnDCharacter{
     private DnDRace race;
     private DnDSkills skills;
     private DnDAbilities abilities;
