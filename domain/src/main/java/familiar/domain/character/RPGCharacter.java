@@ -7,14 +7,19 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
 public abstract class RPGCharacter {
-    private long id;
-    private User owner;
-    private LocalDateTime created;
-    private Name name;
-    private long money;
-    private int hitPoints;
-    private List<Note> storyTellerNotes;
-    private Status status;
+    protected long id;
+    protected User owner;
+    protected LocalDateTime created;
+    protected Name name;
+    protected Gender gender;
+    protected int age;
+    protected List<Note> storyTellerNotes;
+    protected Status status;
+
+    public RPGCharacter(Name name, Gender gender, int age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
 }
