@@ -1,5 +1,7 @@
 package familiar.domain.character.witcher.assist;
 
+import lombok.SneakyThrows;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +11,8 @@ public class PhysicalTable {
 
     private final Map<Integer, List<Integer>> physicalTableScores = new HashMap<>();
 
-    public PhysicalTable() throws IOException {
+    @SneakyThrows
+    public PhysicalTable() {
         fillValuesFromFile();
     }
 
