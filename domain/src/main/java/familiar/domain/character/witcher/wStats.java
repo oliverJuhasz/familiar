@@ -1,6 +1,6 @@
 package familiar.domain.character.witcher;
 
-public enum wAbilities {
+public enum wStats {
     INTELLIGENCE,
     REFLEXES,
     DEXTERITY,
