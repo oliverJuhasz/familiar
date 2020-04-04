@@ -54,7 +54,14 @@ public enum wSkills {
     RESISTCOERCION(wAbilities.WILL, 1),
     RITUALCRAFTING(wAbilities.WILL, 2);
 
-    wSkills(wAbilities ability, int multiplier) {
+    public final wAbilities ability;
+    public final int multiplier;
 
+    wSkills(wAbilities ability, int multiplier) {
+        this.ability = ability;
+        this.multiplier = multiplier;
     }
+
+
+
 }
