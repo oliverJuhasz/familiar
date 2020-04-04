@@ -9,7 +9,14 @@ import java.util.Map;
 
 public class PhysicalTable {
 
+    public static final int LOWER_LIMIT = 2;
+    public static final int UPPER_LIMIT = 13;
+    public static final int HP_COLUMN = 1;
+    public static final int STAMINA_COLUMN = 2;
+    public static final int RECOVERY_COLUMN = 3;
+    public static final int STUN_COLUMN = 4;
     private final Map<Integer, List<Integer>> physicalTableScores = new HashMap<>();
+    CsvReader reader = new CsvReader(); //TODO: Bean
 
     @SneakyThrows
     public PhysicalTable() {
@@ -17,7 +24,7 @@ public class PhysicalTable {
     }
 
     private void fillValuesFromFile() throws IOException {
-        CsvReader reader = new CsvReader();
+
         List<String[]> rawScores;
         rawScores = reader.getData("PhysicalTable");
         for (String[] line : rawScores) {
@@ -27,29 +34,29 @@ public class PhysicalTable {
         }
     }
 
-    private int bodyPlusWillRoundedDown(int bodyStat, int willStat) {
-        int stat = (bodyStat + willStat) /2;
-        if (stat < 2) {
-            stat = 2;
-        } else if (stat > 13){
-            stat = 13;
+    private int calculateStatIndex(int bodyStat, int willStat) {
+        int stat = (bodyStat + willStat) / LOWER_LIMIT;
+        if (stat < LOWER_LIMIT) {
+            stat = LOWER_LIMIT;
+        } else if (stat > UPPER_LIMIT){
+            stat = UPPER_LIMIT;
         }
         return stat;
     }
 
     public int getHealthPoint(int bodyStat, int willStat) {
-        return physicalTableScores.get(bodyPlusWillRoundedDown(bodyStat, willStat)).get(1);
+        return physicalTableScores.get(calculateStatIndex(bodyStat, willStat)).get(HP_COLUMN);
     }
 
     public int getStamina(int bodyStat, int willStat) {
-        return physicalTableScores.get(bodyPlusWillRoundedDown(bodyStat, willStat)).get(2);
+        return physicalTableScores.get(calculateStatIndex(bodyStat, willStat)).get(STAMINA_COLUMN);
     }
 
     public int getRecovery(int bodyStat, int willStat) {
-        return physicalTableScores.get(bodyPlusWillRoundedDown(bodyStat, willStat)).get(3);
+        return physicalTableScores.get(calculateStatIndex(bodyStat, willStat)).get(RECOVERY_COLUMN);
     }
 
     public int getStun(int bodyStat, int willStat) {
-        return physicalTableScores.get(bodyPlusWillRoundedDown(bodyStat, willStat)).get(4);
+        return physicalTableScores.get(calculateStatIndex(bodyStat, willStat)).get(STUN_COLUMN);
     }
 }
