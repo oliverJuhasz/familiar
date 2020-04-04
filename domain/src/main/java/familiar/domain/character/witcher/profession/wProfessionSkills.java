@@ -114,6 +114,13 @@ public enum wProfessionSkills {
     QUICKSTRIKE(wAbilities.REFLEXES, PARRYARROWS),
     WHIRL(wAbilities.REFLEXES, QUICKSTRIKE);
 
-    wProfessionSkills(wAbilities empathy, wProfessionSkills preRequisite) {
+    public final wAbilities baseAbility;
+    public final wProfessionSkills preRequisite;
+
+    wProfessionSkills(wAbilities baseAbility, wProfessionSkills preRequisite) {
+        this.baseAbility = baseAbility;
+        this.preRequisite = preRequisite;
     }
+
+
 }
