@@ -10,6 +10,7 @@ public enum wAbilities {
     CRAFT,
     WILL,
     LUCK,
+    NULL,
     VIGOR,
     STUN,
     RUN,
