@@ -27,8 +27,14 @@ public class PhysicalTable {
         }
     }
 
-    public int bodyPlusWillRoundedDown(int bodyStat, int willStat) {
-        return (bodyStat + willStat) /2;
+    private int bodyPlusWillRoundedDown(int bodyStat, int willStat) {
+        int stat = (bodyStat + willStat) /2;
+        if (stat < 2) {
+            stat = 2;
+        } else if (stat > 13){
+            stat = 13;
+        }
+        return stat;
     }
 
     public int getHealthPoint(int bodyStat, int willStat) {
