@@ -10,8 +10,8 @@ import java.util.Map;
 public class HandToHandTable {
 
     public static final int UPPER_LIMIT = 13;
-    public static final int PUNCH_INDEX = 0;
-    public static final int KICK_INDEX = 1;
+    public static final int PUNCH_COLUMN = 0;
+    public static final int KICK_COLUMN = 1;
     private final Map<Integer, List<String>> handToHandScores = new HashMap<>();
     CsvReader reader = new CsvReader(); //TODO: Bean
 
@@ -30,10 +30,14 @@ public class HandToHandTable {
     }
 
     public String getPunchDamage(int bodyStat) {
-        return bodyStat > UPPER_LIMIT ? handToHandScores.get(UPPER_LIMIT).get(PUNCH_INDEX) : handToHandScores.get(bodyStat).get(PUNCH_INDEX);
+        return bodyStat > UPPER_LIMIT ?
+                handToHandScores.get(UPPER_LIMIT).get(PUNCH_COLUMN) :
+                handToHandScores.get(bodyStat).get(PUNCH_COLUMN);
     }
 
     public String getKickDamage(int bodyStat) {
-        return bodyStat > UPPER_LIMIT ? handToHandScores.get(UPPER_LIMIT).get(KICK_INDEX) : handToHandScores.get(bodyStat).get(KICK_INDEX);
+        return bodyStat > UPPER_LIMIT ?
+                handToHandScores.get(UPPER_LIMIT).get(KICK_COLUMN) :
+                handToHandScores.get(bodyStat).get(KICK_COLUMN);
     }
 }
