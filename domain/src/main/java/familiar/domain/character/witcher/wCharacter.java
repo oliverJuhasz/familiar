@@ -25,4 +25,8 @@ public class wCharacter extends RPGCharacter {
         this.race = race;
         this.profession = profession;
     }
+
+    public int getDerivedSkill(wSkills skill) {
+        return coreAbilities.get(skill.ability) * coreSkills.get(skill);
+    }
 }
