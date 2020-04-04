@@ -54,11 +54,11 @@ public enum wSkills {
     RESISTCOERCION(wAbilities.WILL, 1),
     RITUALCRAFTING(wAbilities.WILL, 2);
 
-    public final wAbilities ability;
+    public final wAbilities baseAbility;
     public final int multiplier;
 
     wSkills(wAbilities ability, int multiplier) {
-        this.ability = ability;
+        this.baseAbility = ability;
         this.multiplier = multiplier;
     }
 
