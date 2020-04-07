@@ -1,5 +1,0 @@
-rootProject.name = 'core'
-include 'domain'
-include 'service'
-include 'web'
-
