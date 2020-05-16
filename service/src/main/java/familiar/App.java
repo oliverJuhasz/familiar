@@ -1,5 +1,6 @@
 package familiar;
 
+import familiar.dao.CampaignRepository;
 import familiar.domain.Campaign;
 import familiar.domain.Session;
 import familiar.domain.User;
@@ -11,9 +12,13 @@ import familiar.domain.character.witcher.wCharacter;
 import familiar.domain.character.witcher.wRace;
 import familiar.domain.character.witcher.wSkills;
 import familiar.domain.character.witcher.wStats;
+import familiar.entities.CampaignEntity;
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,6 +27,9 @@ import java.util.Map;
 
 @SpringBootApplication
 public class App implements CommandLineRunner {
+
+    @Autowired
+    private CampaignRepository repo;
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -62,5 +70,14 @@ public class App implements CommandLineRunner {
                 .name("My first campaign")
                 .build();
         System.out.println(myFirstCampaign);
+        CampaignEntity campaignEntity = new CampaignEntity();
+        campaignEntity.setName("My first campaign");
+        campaignEntity.setCreated(LocalDateTime.now());
+        campaignEntity.setWorld(familiar.entities.World.WITCHER);
+        repo.saveAndFlush(campaignEntity);
+        System.out.println("oh hai");
+        List<CampaignEntity> all = repo.findAll();
+        all.forEach(System.out::println);
+
     }
 }
