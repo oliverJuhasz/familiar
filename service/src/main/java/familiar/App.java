@@ -77,7 +77,6 @@ public class App implements CommandLineRunner {
         repo.saveAndFlush(campaignEntity);
         System.out.println("oh hai");
         List<CampaignEntity> all = repo.findAll();
-        all.forEach(System.out::println);
 
     }
 }
