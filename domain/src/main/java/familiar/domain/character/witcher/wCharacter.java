@@ -3,8 +3,6 @@ package familiar.domain.character.witcher;
 import familiar.domain.character.Gender;
 import familiar.domain.character.Name;
 import familiar.domain.character.RPGCharacter;
-import assist.HandToHandTable;
-import assist.PhysicalTable;
 import familiar.domain.character.witcher.profession.wProfession;
 import familiar.domain.character.witcher.profession.wProfessionSkills;
 import lombok.Builder;

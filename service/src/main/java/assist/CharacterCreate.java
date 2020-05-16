@@ -1,4 +1,4 @@
-package familiar.domain.character.witcher;
+package assist;
 
 import familiar.domain.character.Gender;
 import familiar.domain.character.Name;
