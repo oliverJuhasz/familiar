@@ -4,11 +4,13 @@ package familiar.entities.character;
 import familiar.entities.CampaignEntity;
 import familiar.entities.NoteEntity;
 import familiar.entities.PlayerEntity;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Data
 @Entity
 public abstract class RPGCharacterEntity {
 
