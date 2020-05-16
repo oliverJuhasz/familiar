@@ -1,4 +1,4 @@
-package familiar.domain.character.witcher.assist;
+package assist;
 
 import lombok.SneakyThrows;
 

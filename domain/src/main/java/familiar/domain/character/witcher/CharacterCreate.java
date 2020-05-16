@@ -2,9 +2,8 @@ package familiar.domain.character.witcher;
 
 import familiar.domain.character.Gender;
 import familiar.domain.character.Name;
-import familiar.domain.character.witcher.assist.PhysicalTable;
+import assist.PhysicalTable;
 import familiar.domain.character.witcher.profession.wProfession;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Map;
 
