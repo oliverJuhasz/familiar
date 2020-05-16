@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Builder
 @Entity
 @NoArgsConstructor
 public class CampaignEntity {
@@ -29,11 +28,9 @@ public class CampaignEntity {
 
     private LocalDateTime created;
 
-    @JoinColumn(name = "session_id")
     @OneToMany(mappedBy="campaign", cascade = CascadeType.PERSIST)
     private List<SessionEntity> sessions;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "note_id")
     private List<NoteEntity> notes;
 }

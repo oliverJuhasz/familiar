@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@MappedSuperclass
 public abstract class RPGCharacterEntity {
 
     @Id

@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Builder
 @NoArgsConstructor
 public class PlayerEntity extends UserEntity {
 

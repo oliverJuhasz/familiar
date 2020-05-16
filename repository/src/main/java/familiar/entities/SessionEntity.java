@@ -28,6 +28,7 @@ public class SessionEntity {
     private LocalDateTime created;
 
     @ManyToOne
+    @JoinColumn(name = "campaign_id")
     private CampaignEntity campaign;
 
     private String summary;

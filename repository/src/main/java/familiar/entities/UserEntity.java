@@ -10,7 +10,6 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Data
-@Builder
 @MappedSuperclass
 @NoArgsConstructor
 public class UserEntity {
