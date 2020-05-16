@@ -1,5 +1,6 @@
 package familiar.domain;
 
 public enum World {
-    DungeonsAndDragons
+    DUNGEONSANDDRAGONS,
+    WITCHER
 }
