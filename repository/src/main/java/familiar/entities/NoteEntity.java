@@ -14,6 +14,8 @@ public class NoteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String title;
     private String text;
     private LocalDateTime created;

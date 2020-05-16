@@ -23,7 +23,7 @@ public class CampaignEntity {
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "player_campaign",
                 joinColumns = @JoinColumn(name = "campaign_id"),
-                inverseJoinColumns = @JoinColumn(name = "student_id"))
+                inverseJoinColumns = @JoinColumn(name = "player_id"))
     private List<PlayerEntity> players;
 
     private LocalDateTime created;
@@ -32,5 +32,8 @@ public class CampaignEntity {
     private List<SessionEntity> sessions;
 
     @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "campaign_note",
+                joinColumns = @JoinColumn(name = "campaign_id"),
+                inverseJoinColumns = @JoinColumn(name = "note_id"))
     private List<NoteEntity> notes;
 }
