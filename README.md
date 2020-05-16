@@ -1,7 +1,7 @@
 # Familiar
 Project description:
 Familiar is a hobby project with two goals. 
-The first goal is to create a tool for tabletop RPG players to keep their data, notes, characters in one place. It would also assist the game master with numerous tasks during play, like making hidden rolls, keeping private records or helping with combat.
+The first goal is to create a tool for tabletop RPG players to keep their data, notes, characters in one place. It would also familiar.service.assist the game master with numerous tasks during play, like making hidden rolls, keeping private records or helping with combat.
 My second goal is honing my programming skills. As someone new to software development, building a simple software from ground up should really provide a few experience points.
 
 Core features:

@@ -5,7 +5,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>domain</module>
-        <module>service</module>
+        <module>familiar.service</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -21,7 +21,7 @@
 
 	<properties>
 		<java.version>11</java.version>
-		<start-class>App</start-class>
+		<start-class>familiar.App</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>9</maven.compiler.source>
 		<maven.compiler.target>9</maven.compiler.target>

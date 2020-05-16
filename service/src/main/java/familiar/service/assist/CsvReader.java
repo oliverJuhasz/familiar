@@ -1,4 +1,4 @@
-package assist;
+package familiar.service.assist;
 
 import java.io.BufferedReader;
 import java.io.File;

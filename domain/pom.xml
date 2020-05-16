@@ -19,7 +19,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.0.1.RELEASE</version>
                 <configuration>
-                    <mainClass>App</mainClass>
+                    <mainClass>familiar.App</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
             </plugin>

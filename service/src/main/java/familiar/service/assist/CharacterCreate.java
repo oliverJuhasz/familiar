@@ -1,8 +1,7 @@
-package assist;
+package familiar.service.assist;
 
 import familiar.domain.character.Gender;
 import familiar.domain.character.Name;
-import assist.PhysicalTable;
 import familiar.domain.character.witcher.profession.wProfession;
 import familiar.domain.character.witcher.wCharacter;
 import familiar.domain.character.witcher.wRace;
