@@ -43,9 +43,9 @@ public abstract class RPGCharacterEntity {
     protected Status status;
 
     @ManyToMany
-    @JoinTable(name = "`Characters_Sessions`",
+    @JoinTable(name = "`RpgCharacters_Sessions`",
             joinColumns = @JoinColumn(name = "`SessionID`"),
-            inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
+            inverseJoinColumns = @JoinColumn(name = "`RpgCharacterID`"))
     protected List<SessionEntity> sessions;
 
 }
