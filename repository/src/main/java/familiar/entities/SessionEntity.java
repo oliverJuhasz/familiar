@@ -25,6 +25,9 @@ public class SessionEntity {
     private List<NoteEntity> notes;
 
     @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "`Session_Combat`",
+            joinColumns = @JoinColumn(name = "SessionID"),
+            inverseJoinColumns = @JoinColumn(name = "CombatID"))
     private List<CombatEntity> combats;
 
     @Column(name = "`Created`")
