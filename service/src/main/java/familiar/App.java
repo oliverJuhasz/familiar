@@ -17,7 +17,6 @@ import familiar.entities.CampaignEntity;
 import familiar.entities.NoteEntity;
 import familiar.entities.PlayerEntity;
 import familiar.entities.SessionEntity;
-import familiar.entities.character.RPGCharacterEntity;
 import familiar.entities.character.Status;
 import familiar.entities.character.witcher.wCharacterEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,12 +101,13 @@ public class App implements CommandLineRunner {
         sessionEntity.setSummary("This was an intense session");
         sessionEntity.setNotes(List.of(note2));
 
-        RPGCharacterEntity rpgCharacterEntity = new wCharacterEntity();
+        wCharacterEntity rpgCharacterEntity = new wCharacterEntity();
         rpgCharacterEntity.setAge(45);
         rpgCharacterEntity.setSessions(List.of(sessionEntity));
         rpgCharacterEntity.setCreated(LocalDateTime.now());
         rpgCharacterEntity.setGender(familiar.entities.character.Gender.FEMALE);
         rpgCharacterEntity.setStatus(Status.ALIVE);
+        rpgCharacterEntity.setCoreAbilities(Map.of(familiar.entities.character.witcher.wStats.LUCK, 5, familiar.entities.character.witcher.wStats.DEXTERITY, 8));
 
         sessionEntity.setCharacters(List.of(rpgCharacterEntity));
 
