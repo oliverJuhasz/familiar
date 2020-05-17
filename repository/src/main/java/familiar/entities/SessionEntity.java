@@ -9,14 +9,16 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name = "`Sessions`")
 public class SessionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`SessionID`")
     private long id;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "character_id")
+    @JoinColumn(name = "`FK_CharacterID`")
     private List<RPGCharacterEntity> characters;
 
     @OneToMany(cascade = CascadeType.PERSIST)
@@ -25,12 +27,14 @@ public class SessionEntity {
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<CombatEntity> combats;
 
+    @Column(name = "`Created`")
     private LocalDateTime created;
 
-    @ManyToOne
-    @JoinColumn(name = "campaign_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "`FK_CampaignID`")
     private CampaignEntity campaign;
 
+    @Column(name = "`Summary`")
     private String summary;
     
 }
