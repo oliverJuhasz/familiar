@@ -17,12 +17,22 @@ public class CombatEntity {
     private long id;
 
     @ManyToOne
+    @JoinColumn(name = "`FK_SessionID`")
     private SessionEntity session;
 
+    @Column(name = "`Description`", columnDefinition = "TEXT")
+    private String description;
+
     @OneToMany
+    @JoinTable(name = "`Combats_Notes`",
+            joinColumns = @JoinColumn(name = "`CombatID`"),
+            inverseJoinColumns = @JoinColumn(name = "`NoteID`"))
     private List<NoteEntity> notes;
 
     @OneToMany
+    @JoinTable(name = "`Combats_Characters`",
+            joinColumns = @JoinColumn(name = "`CombatID`"),
+            inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
     private List<RPGCharacterEntity> characters;
 
 
