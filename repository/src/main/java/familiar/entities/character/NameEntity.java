@@ -5,24 +5,30 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
+@Table(name = "`Names`")
 public class NameEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`NameID`")
     private long id;
 
+    @Column(name = "`First`")
     private String firstName;
+
+    @Column(name = "`Last`")
     private String lastName;
+
+    @Column(name = "`Title`")
     private String title;
+
+    @Column(name = "`Nick`")
     private String nickName;
 }
