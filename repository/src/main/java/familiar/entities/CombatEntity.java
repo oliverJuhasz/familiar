@@ -35,5 +35,4 @@ public class CombatEntity {
             inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
     private List<RPGCharacterEntity> characters;
 
-
 }

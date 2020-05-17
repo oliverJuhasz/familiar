@@ -16,21 +16,21 @@ import java.util.Map;
 public class wCharacterEntity extends RPGCharacterEntity {
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "`WitcherCharacter_CoreAbilities`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz"), joinColumns = @JoinColumn(name = "`CoreAbilityID`"))
+    @CollectionTable(name = "`WitcherCharacters_CoreAbilities`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz"), joinColumns = @JoinColumn(name = "`CoreAbilityID`"))
     @MapKeyColumn(name = "`Ability`", length = 20)
     @MapKeyEnumerated(EnumType.STRING)
     @Column(name = "`CoreAbilityValue`")
     private Map<wStats, Integer> coreAbilities;
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "`WitcherCharacter_CoreSkills`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz2"), joinColumns = @JoinColumn(name = "`CoreSkillID`"))
+    @CollectionTable(name = "`WitcherCharacters_CoreSkills`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz2"), joinColumns = @JoinColumn(name = "`CoreSkillID`"))
     @MapKeyColumn(name = "`Skill`", length = 20)
     @MapKeyEnumerated(EnumType.STRING)
     @Column(name = "`CoreSkillValue`")
     private Map<wSkills, Integer> coreSkills;
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "`WitcherCharacter_ProfessionSkills`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz3"), joinColumns = @JoinColumn(name = "`ProfessionID`"))
+    @CollectionTable(name = "`WitcherCharacters_ProfessionSkills`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz3"), joinColumns = @JoinColumn(name = "`ProfessionID`"))
     @MapKeyColumn(name = "`Profession`", length = 40)
     @MapKeyEnumerated(EnumType.STRING)
     @Column(name = "`CoreSkillValue`")
