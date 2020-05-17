@@ -22,10 +22,13 @@ public class SessionEntity {
     private List<RPGCharacterEntity> characters;
 
     @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "`Sessions_Notes`",
+            joinColumns = @JoinColumn(name = "`SessionID`"),
+            inverseJoinColumns = @JoinColumn(name = "`NoteID`"))
     private List<NoteEntity> notes;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "`Session_Combat`",
+    @JoinTable(name = "`Sessions_Combats`",
             joinColumns = @JoinColumn(name = "SessionID"),
             inverseJoinColumns = @JoinColumn(name = "CombatID"))
     private List<CombatEntity> combats;
