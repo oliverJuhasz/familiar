@@ -18,27 +18,31 @@ public class CampaignEntity {
     @Column(name = "`CampaignID`")
     private Long id;
 
-    @Column(name = "`Name`")
+    @Column(name = "`Name`", length = 50, nullable = false)
     private String name;
 
-    @Column(name = "`World`")
+    @Column(name = "`Description`", columnDefinition = "TEXT")
+    private String description;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "`World`", nullable = false)
     private World world;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`player_campaign`",
-                joinColumns = @JoinColumn(name = "campaign_id"),
-                inverseJoinColumns = @JoinColumn(name = "player_id"))
+            joinColumns = @JoinColumn(name = "campaign_id"),
+            inverseJoinColumns = @JoinColumn(name = "player_id"))
     private List<PlayerEntity> players;
 
-    @Column(name = "`Created`")
+    @Column(name = "`Created`", nullable = false)
     private LocalDateTime created;
 
     @OneToMany(mappedBy="campaign", cascade = CascadeType.PERSIST)
     private List<SessionEntity> sessions;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "`Campaign_Note`",
-                joinColumns = @JoinColumn(name = "CampaignID"),
-                inverseJoinColumns = @JoinColumn(name = "NoteId"))
+    @JoinTable(name = "`Campaigns_Notes`",
+            joinColumns = @JoinColumn(name = "CampaignID"),
+            inverseJoinColumns = @JoinColumn(name = "NoteId"))
     private List<NoteEntity> notes;
 }
