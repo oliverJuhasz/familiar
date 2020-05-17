@@ -15,13 +15,13 @@ public class NoteEntity {
     @Column(name = "`NoteID`")
     private long id;
 
-    @Column(name = "`Title`")
+    @Column(name = "`Title`", length = 100, nullable = false)
     private String title;
 
-    @Column(name = "`Text`")
+    @Column(name = "`Text`", columnDefinition = "TEXT")
     private String text;
 
-    @Column(name = "`Created`")
+    @Column(name = "`Created`", nullable = false)
     private LocalDateTime created;
 
 }
