@@ -1,6 +1,7 @@
 package familiar;
 
 import familiar.dao.CampaignRepository;
+import familiar.dao.UserRepository;
 import familiar.domain.Campaign;
 import familiar.domain.Session;
 import familiar.domain.User;
@@ -14,16 +15,15 @@ import familiar.domain.character.witcher.wSkills;
 import familiar.domain.character.witcher.wStats;
 import familiar.entities.CampaignEntity;
 import familiar.entities.NoteEntity;
+import familiar.entities.PlayerEntity;
 import familiar.entities.SessionEntity;
 import familiar.entities.character.RPGCharacterEntity;
 import familiar.entities.character.Status;
 import familiar.entities.character.witcher.wCharacterEntity;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -35,6 +35,9 @@ public class App implements CommandLineRunner {
 
     @Autowired
     private CampaignRepository repo;
+
+    @Autowired
+    private UserRepository userRepo;
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -113,5 +116,14 @@ public class App implements CommandLineRunner {
         System.out.println("oh hai");
         List<CampaignEntity> all = repo.findAll();
 
+        PlayerEntity user = new PlayerEntity();
+        user.setName("Oliver");
+        user.setPassword("123");
+        user.setCreated(LocalDateTime.now());
+        user.setCharacters(List.of(rpgCharacterEntity));
+        user.setCampaign(List.of(campaignEntity));
+        user.setUserName("username");
+
+        userRepo.save(user);
     }
 }
