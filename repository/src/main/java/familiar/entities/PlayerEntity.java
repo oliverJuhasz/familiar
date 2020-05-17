@@ -1,21 +1,19 @@
 package familiar.entities;
 
 import familiar.entities.character.RPGCharacterEntity;
-import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.annotation.processing.Generated;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
 public class PlayerEntity extends UserEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    @Column(name = "`Name`")
     private String name;
 
     @ManyToMany(mappedBy="players")

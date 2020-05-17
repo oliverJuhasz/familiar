@@ -1,12 +1,9 @@
 package familiar.entities;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-import javax.persistence.Entity;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -14,7 +11,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class UserEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "`PlayerID`")
+    private long id;
+
+    @Column(name = "`UserName`")
     private String name;
+
+    @Column(name = "`Password`")
     private String password;
+
+    @Column(name = "`Created`")
     private LocalDateTime created;
 }
