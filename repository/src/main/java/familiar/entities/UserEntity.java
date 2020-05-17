@@ -14,14 +14,14 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "`PlayerID`")
-    private long id;
+    protected long id;
 
     @Column(name = "`UserName`")
-    private String name;
+    protected String name;
 
     @Column(name = "`Password`")
-    private String password;
+    protected String password;
 
     @Column(name = "`Created`")
-    private LocalDateTime created;
+    protected LocalDateTime created;
 }
