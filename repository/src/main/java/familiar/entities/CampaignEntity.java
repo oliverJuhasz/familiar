@@ -28,10 +28,16 @@ public class CampaignEntity {
     @Column(name = "`World`", nullable = false)
     private World world;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "`Campaigns_Players`",
+            joinColumns = @JoinColumn(name = "`CampaignID`"),
+            inverseJoinColumns = @JoinColumn(name = "`PlayerID`"))
+    private List<PlayerEntity> players;
+
     @Column(name = "`Created`", nullable = false)
     private LocalDateTime created;
 
-    @OneToMany(mappedBy="campaign", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "campaign", cascade = CascadeType.PERSIST)
     private List<SessionEntity> sessions;
 
     @OneToMany(cascade = CascadeType.PERSIST)
