@@ -1,7 +1,5 @@
 package familiar.entities;
 
-import familiar.entities.character.RPGCharacterEntity;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
