@@ -30,8 +30,8 @@ public class CampaignEntity {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Campaigns_Players`",
-            joinColumns = @JoinColumn(name = "campaign_id"),
-            inverseJoinColumns = @JoinColumn(name = "player_id"))
+            joinColumns = @JoinColumn(name = "`CampaignID`"),
+            inverseJoinColumns = @JoinColumn(name = "`PlayerID`"))
     private List<PlayerEntity> players;
 
     @Column(name = "`Created`", nullable = false)
