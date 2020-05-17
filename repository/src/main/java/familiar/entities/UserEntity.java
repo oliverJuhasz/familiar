@@ -7,17 +7,19 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
-@MappedSuperclass
+@Entity
 @NoArgsConstructor
-public class UserEntity {
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "`Users`")
+public abstract class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "`PlayerID`")
+    @Column(name = "`UserID`")
     protected long id;
 
     @Column(name = "`UserName`")
-    protected String name;
+    protected String userName;
 
     @Column(name = "`Password`")
     protected String password;

@@ -1,16 +1,17 @@
 package familiar.entities;
 
 import familiar.entities.character.RPGCharacterEntity;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@Data
+@PrimaryKeyJoinColumn(name = "`FK_UserID`")
+@Table(name = "`Players`")
 public class PlayerEntity extends UserEntity {
 
     @Column(name = "`Name`")
@@ -19,6 +20,6 @@ public class PlayerEntity extends UserEntity {
     @ManyToMany(mappedBy="players")
     private List<CampaignEntity> campaign;
 
-    @OneToMany
+    @OneToMany(mappedBy="owner")
     private List<RPGCharacterEntity> characters;
 }
