@@ -18,7 +18,7 @@ public class CampaignEntity {
     @Column(name = "`CampaignID`")
     private Long id;
 
-    @Column(name = "`Name`", length = 50, nullable = false)
+    @Column(name = "`Name`", length = 100, nullable = false)
     private String name;
 
     @Column(name = "`Description`", columnDefinition = "TEXT")
