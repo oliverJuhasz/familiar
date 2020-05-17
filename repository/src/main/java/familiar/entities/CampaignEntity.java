@@ -37,7 +37,7 @@ public class CampaignEntity {
     private List<SessionEntity> sessions;
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "`CampaignNote`",
+    @JoinTable(name = "`Campaign_To_Note`",
                 joinColumns = @JoinColumn(name = "CampaignID"),
                 inverseJoinColumns = @JoinColumn(name = "NoteId"))
     private List<NoteEntity> notes;
