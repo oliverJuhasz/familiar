@@ -108,6 +108,9 @@ public class App implements CommandLineRunner {
         rpgCharacterEntity.setGender(familiar.entities.character.Gender.FEMALE);
         rpgCharacterEntity.setStatus(Status.ALIVE);
         rpgCharacterEntity.setCoreAbilities(Map.of(familiar.entities.character.witcher.wStats.LUCK, 5, familiar.entities.character.witcher.wStats.DEXTERITY, 8));
+        rpgCharacterEntity.setProfession(familiar.entities.character.witcher.profession.wProfession.BARD);
+        rpgCharacterEntity.setCoreSkills(Map.of(familiar.entities.character.witcher.wSkills.PICKLOCK, 4));
+        rpgCharacterEntity.setRace(familiar.entities.character.witcher.wRace.ELF);
 
         sessionEntity.setCharacters(List.of(rpgCharacterEntity));
 
