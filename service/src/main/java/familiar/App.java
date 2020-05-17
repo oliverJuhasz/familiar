@@ -95,20 +95,21 @@ public class App implements CommandLineRunner {
 
         campaignEntity.setNotes(List.of(note));
 
-        RPGCharacterEntity rpgCharacterEntity = new wCharacterEntity();
-        rpgCharacterEntity.setAge(45);
-        rpgCharacterEntity.setCampaigns(List.of(campaignEntity));
-        rpgCharacterEntity.setCreated(LocalDateTime.now());
-        rpgCharacterEntity.setGender(familiar.entities.character.Gender.FEMALE);
-        rpgCharacterEntity.setStatus(Status.ALIVE);
-
 
         SessionEntity sessionEntity = new SessionEntity();
         sessionEntity.setCampaign(campaignEntity);
         sessionEntity.setCreated(LocalDateTime.now());
         sessionEntity.setSummary("This was an intense session");
-        sessionEntity.setCharacters(List.of(rpgCharacterEntity));
         sessionEntity.setNotes(List.of(note2));
+
+        RPGCharacterEntity rpgCharacterEntity = new wCharacterEntity();
+        rpgCharacterEntity.setAge(45);
+        rpgCharacterEntity.setSessions(List.of(sessionEntity));
+        rpgCharacterEntity.setCreated(LocalDateTime.now());
+        rpgCharacterEntity.setGender(familiar.entities.character.Gender.FEMALE);
+        rpgCharacterEntity.setStatus(Status.ALIVE);
+
+        sessionEntity.setCharacters(List.of(rpgCharacterEntity));
 
         campaignEntity.setSessions(List.of(sessionEntity));
 

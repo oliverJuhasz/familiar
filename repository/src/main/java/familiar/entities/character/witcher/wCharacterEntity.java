@@ -1,18 +1,16 @@
 package familiar.entities.character.witcher;
 
-import familiar.entities.character.Gender;
-import familiar.entities.character.NameEntity;
 import familiar.entities.character.RPGCharacterEntity;
-import familiar.entities.character.witcher.profession.wProfession;
-import familiar.entities.character.witcher.profession.wProfessionSkills;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
-import java.util.Map;
+import javax.persistence.Table;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
+@Table(name = "WitcherCharacters")
 public class wCharacterEntity extends RPGCharacterEntity {
 //    private Map<wStats, Integer> coreAbilities;
 //    private Map<wSkills, Integer> coreSkills;
