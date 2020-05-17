@@ -29,7 +29,7 @@ public class CampaignEntity {
     private World world;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "`player_campaign`",
+    @JoinTable(name = "`Campaigns_Players`",
             joinColumns = @JoinColumn(name = "campaign_id"),
             inverseJoinColumns = @JoinColumn(name = "player_id"))
     private List<PlayerEntity> players;
