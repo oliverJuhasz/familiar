@@ -30,14 +30,14 @@ public class SessionEntity {
             inverseJoinColumns = @JoinColumn(name = "CombatID"))
     private List<CombatEntity> combats;
 
-    @Column(name = "`Created`")
+    @Column(name = "`Created`", nullable = false)
     private LocalDateTime created;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "`FK_CampaignID`")
     private CampaignEntity campaign;
 
-    @Column(name = "`Summary`")
+    @Column(name = "`Summary`", columnDefinition = "TEXT")
     private String summary;
     
 }
