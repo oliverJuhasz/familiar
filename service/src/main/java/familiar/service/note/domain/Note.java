@@ -1,10 +1,12 @@
 package familiar.service.note.domain;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 public class Note {
 
     private long id;

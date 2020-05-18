@@ -18,7 +18,9 @@ import familiar.entities.NoteEntity;
 import familiar.entities.PlayerEntity;
 import familiar.entities.SessionEntity;
 import familiar.entities.character.Status;
-import familiar.entities.character.witcher.wCharacterEntity;
+import familiar.entities.character.witcher.WitcherCharacterEntity;
+import familiar.entities.character.witcher.WitcherSkills;
+import familiar.entities.character.witcher.WitcherStats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -101,16 +103,16 @@ public class App implements CommandLineRunner {
         sessionEntity.setSummary("This was an intense session");
         sessionEntity.setNotes(List.of(note2));
 
-        wCharacterEntity rpgCharacterEntity = new wCharacterEntity();
+        WitcherCharacterEntity rpgCharacterEntity = new WitcherCharacterEntity();
         rpgCharacterEntity.setAge(45);
         rpgCharacterEntity.setSessions(List.of(sessionEntity));
         rpgCharacterEntity.setCreated(LocalDateTime.now());
         rpgCharacterEntity.setGender(familiar.entities.character.Gender.FEMALE);
         rpgCharacterEntity.setStatus(Status.ALIVE);
-        rpgCharacterEntity.setCoreAbilities(Map.of(familiar.entities.character.witcher.wStats.LUCK, 5, familiar.entities.character.witcher.wStats.DEXTERITY, 8));
+        rpgCharacterEntity.setCoreAbilities(Map.of(WitcherStats.LUCK, 5, WitcherStats.DEXTERITY, 8));
         rpgCharacterEntity.setProfession(familiar.entities.character.witcher.profession.wProfession.BARD);
-        rpgCharacterEntity.setCoreSkills(Map.of(familiar.entities.character.witcher.wSkills.PICKLOCK, 4));
-        rpgCharacterEntity.setRace(familiar.entities.character.witcher.wRace.ELF);
+        rpgCharacterEntity.setCoreSkills(Map.of(WitcherSkills.PICKLOCK, 4));
+        rpgCharacterEntity.setRace(WitcherRace.ELF);
 
         sessionEntity.setCharacters(List.of(rpgCharacterEntity));
 

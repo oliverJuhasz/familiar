@@ -1,9 +1,9 @@
 package familiar.service.campaign.domain;
 
-import familiar.entities.World;
 import familiar.service.note.domain.Note;
 import familiar.service.session.domain.Session;
 import familiar.service.user.domain.Player;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -13,6 +13,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@Builder
 @ToString
 public class Campaign {
 

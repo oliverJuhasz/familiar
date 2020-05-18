@@ -1,6 +1,7 @@
 package familiar.entities;
 
 import familiar.entities.character.RPGCharacterEntity;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Builder
 @Table(name = "`Combats`")
 public class CombatEntity {
 

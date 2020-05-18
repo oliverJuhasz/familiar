@@ -26,8 +26,6 @@ public class PlayerEntity extends UserEntity {
                         List<CampaignEntity> campaigns, List<RPGCharacterEntity> characters) {
         super(id, userName, password, created);
         this.name = name;
-        this.campaign = campaigns;
-        this.characters = characters;
     }
 
     @Column(name = "`Name`")

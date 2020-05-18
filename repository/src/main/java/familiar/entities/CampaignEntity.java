@@ -1,5 +1,7 @@
 package familiar.entities;
 
+import familiar.service.campaign.domain.World;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
+@Builder
 @Table(name = "`Campaigns`")
 public class CampaignEntity {
 

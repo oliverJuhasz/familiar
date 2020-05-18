@@ -1,7 +1,9 @@
 package familiar.entities;
 
 import familiar.entities.character.RPGCharacterEntity;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,6 +12,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "`Sessions`")
+@Builder
+@NoArgsConstructor
 public class SessionEntity {
 
     @Id

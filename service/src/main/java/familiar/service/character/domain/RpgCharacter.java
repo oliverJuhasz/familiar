@@ -1,8 +1,8 @@
 package familiar.service.character.domain;
 
 
-import familiar.entities.PlayerEntity;
 import familiar.service.note.domain.Note;
+import familiar.service.user.domain.Player;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class RpgCharacter {
 
     protected long id;
-    protected PlayerEntity owner;
+    protected Player owner;
     protected LocalDateTime created;
     protected Name name;
     protected Gender gender;
