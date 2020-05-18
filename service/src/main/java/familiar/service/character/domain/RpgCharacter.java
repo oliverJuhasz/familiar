@@ -3,7 +3,6 @@ package familiar.service.character.domain;
 
 import familiar.entities.PlayerEntity;
 import familiar.service.note.domain.Note;
-import familiar.service.session.domain.Session;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -20,6 +19,5 @@ public abstract class RpgCharacter {
     protected int age;
     protected List<Note> storyTellerNotes;
     protected Status status;
-    protected List<Session> sessions;
 
 }

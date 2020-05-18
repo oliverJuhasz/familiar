@@ -3,7 +3,6 @@ package familiar.entities.character;
 
 import familiar.entities.NoteEntity;
 import familiar.entities.PlayerEntity;
-import familiar.entities.SessionEntity;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -41,11 +40,5 @@ public abstract class RPGCharacterEntity {
 
     @Column(name = "`Status`")
     protected Status status;
-
-    @ManyToMany
-    @JoinTable(name = "`RpgCharacters_Sessions`",
-            joinColumns = @JoinColumn(name = "`SessionID`"),
-            inverseJoinColumns = @JoinColumn(name = "`RpgCharacterID`"))
-    protected List<SessionEntity> sessions;
 
 }
