@@ -1,6 +1,6 @@
 package familiar.entities;
 
-import familiar.entities.character.RPGCharacterEntity;
+import familiar.entities.character.RpgCharacterEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -35,6 +35,6 @@ public class CombatEntity {
     @JoinTable(name = "`Combats_Characters`",
             joinColumns = @JoinColumn(name = "`CombatID`"),
             inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
-    private List<RPGCharacterEntity> characters;
+    private List<RpgCharacterEntity> characters;
 
 }

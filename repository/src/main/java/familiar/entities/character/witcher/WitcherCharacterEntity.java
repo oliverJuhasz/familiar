@@ -3,7 +3,7 @@ package familiar.entities.character.witcher;
 import familiar.entities.NoteEntity;
 import familiar.entities.PlayerEntity;
 import familiar.entities.character.NameEntity;
-import familiar.entities.character.RPGCharacterEntity;
+import familiar.entities.character.RpgCharacterEntity;
 import familiar.service.character.domain.Gender;
 import familiar.service.character.domain.Status;
 import familiar.service.character.domain.witcher.WitcherRace;
@@ -26,7 +26,7 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @Table(name = "`WitcherCharacters`")
-public class WitcherCharacterEntity extends RPGCharacterEntity {
+public class WitcherCharacterEntity extends RpgCharacterEntity {
 
     @Builder
     public WitcherCharacterEntity(long id, PlayerEntity owner, LocalDateTime created, NameEntity nameEntity, Gender gender,

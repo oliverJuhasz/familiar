@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "`RpgCharacters`")
-public abstract class RPGCharacterEntity {
+public abstract class RpgCharacterEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

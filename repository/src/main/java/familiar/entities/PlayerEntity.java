@@ -1,6 +1,6 @@
 package familiar.entities;
 
-import familiar.entities.character.RPGCharacterEntity;
+import familiar.entities.character.RpgCharacterEntity;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,7 +23,7 @@ public class PlayerEntity extends UserEntity {
 
     @Builder
     public PlayerEntity(long id, String userName, String password, LocalDateTime created, String name,
-                        List<CampaignEntity> campaigns, List<RPGCharacterEntity> characters) {
+                        List<CampaignEntity> campaigns, List<RpgCharacterEntity> characters) {
         super(id, userName, password, created);
         this.name = name;
     }

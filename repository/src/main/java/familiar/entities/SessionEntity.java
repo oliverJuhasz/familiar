@@ -1,6 +1,6 @@
 package familiar.entities;
 
-import familiar.entities.character.RPGCharacterEntity;
+import familiar.entities.character.RpgCharacterEntity;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ public class SessionEntity {
 
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "`FK_CharacterID`")
-    private List<RPGCharacterEntity> characters;
+    private List<RpgCharacterEntity> characters;
 
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Sessions_Notes`",
