@@ -2,7 +2,7 @@ package familiar.service.session.transformer;
 
 import familiar.entities.CampaignEntity;
 import familiar.entities.SessionEntity;
-import familiar.entities.character.RPGCharacterEntity;
+import familiar.entities.character.RpgCharacterEntity;
 import familiar.service.campaign.transformer.CampaignTransformer;
 import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.character.transformer.WitcherCharacterTransformer;
@@ -32,7 +32,7 @@ public class SessionTransformer {
     public SessionEntity transformSessionToSessionEntity(Session from) {
         SessionEntity to = SessionEntity.builder()
                 .campaign(campaignTransformer.transformCampaignToCampaignEntity(from.getCampaign()))
-                .characters((List<RPGCharacterEntity>) witcherCharacterTransformer.transformWitcherCharacterToWitcherCharacterEntity((WitcherCharacter) from.getCharacters()))
+                .characters((List<RpgCharacterEntity>) witcherCharacterTransformer.transformWitcherCharacterToWitcherCharacterEntity((WitcherCharacter) from.getCharacters()))
                 .created(from.getCreated())
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))
                 .id(from.getId())
@@ -45,7 +45,7 @@ public class SessionTransformer {
     public SessionEntity transformSessionToSessionEntity(Session from, CampaignEntity campaign) {
         SessionEntity to = SessionEntity.builder()
                 .campaign(campaign)
-                .characters((List<RPGCharacterEntity>) witcherCharacterTransformer.transformWitcherCharacterToWitcherCharacterEntity((WitcherCharacter) from.getCharacters()))
+                .characters((List<RpgCharacterEntity>) witcherCharacterTransformer.transformWitcherCharacterToWitcherCharacterEntity((WitcherCharacter) from.getCharacters()))
                 .created(from.getCreated())
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))
                 .id(from.getId())
