@@ -34,19 +34,19 @@ public class WitcherCharacterEntity extends familiar.entities.character.RpgChara
     }
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "`WitcherCharacters_CoreAbilities`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz"), joinColumns = @JoinColumn(name = "`CoreAbilityID`"))
+    @CollectionTable(name = "`WitcherCharacters_CoreAbilities`", joinColumns = @JoinColumn(name = "`RpgCharacterId`"))
     @MapKeyColumn(name = "`Ability`", length = 20)
     @Column(name = "`CoreAbilityValue`")
     private Map<String, Integer> coreAbilities;
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "`WitcherCharacters_CoreSkills`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz2"), joinColumns = @JoinColumn(name = "`CoreSkillID`"))
+    @CollectionTable(name = "`WitcherCharacters_CoreSkills`", joinColumns = @JoinColumn(name = "`RpgCharacterId`"))
     @MapKeyColumn(name = "`Skill`", length = 20)
     @Column(name = "`CoreSkillValue`")
     private Map<String, Integer> coreSkills;
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "`WitcherCharacters_ProfessionSkills`", foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "xyz3"), joinColumns = @JoinColumn(name = "`ProfessionID`"))
+    @CollectionTable(name = "`WitcherCharacters_ProfessionSkills`", joinColumns = @JoinColumn(name = "`RpgCharacterId`"))
     @MapKeyColumn(name = "`Profession`", length = 40)
     @Column(name = "`CoreSkillValue`")
     private Map<String, Integer> professionSkills;
