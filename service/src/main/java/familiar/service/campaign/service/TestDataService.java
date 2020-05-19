@@ -1,21 +1,26 @@
 package familiar.service.campaign.service;
 
 import familiar.dao.CampaignRepository;
+import familiar.entities.CampaignEntity;
 import familiar.service.campaign.domain.Campaign;
 import familiar.service.campaign.domain.World;
 import familiar.service.campaign.transformer.CampaignTransformer;
 import familiar.service.character.domain.Gender;
 import familiar.service.character.domain.Name;
+import familiar.service.character.domain.Status;
 import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.character.domain.witcher.WitcherRace;
 import familiar.service.character.domain.witcher.WitcherSkills;
 import familiar.service.character.domain.witcher.WitcherStats;
 import familiar.service.character.domain.witcher.profession.WitcherProfession;
+import familiar.service.character.domain.witcher.profession.WitcherProfessionSkills;
 import familiar.service.session.domain.Session;
+import familiar.service.user.domain.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,21 +34,31 @@ public class TestDataService {
     private CampaignRepository campaignRepository;
 
     public void addTestData() {
+        Player player = new Player();
+        player.setName("Ildi");
+        player.setCreated(LocalDateTime.now());
+        player.setPassword("abcd");
+        player.setUserName("Bloodpotato");
         Campaign myFirstCampaign = Campaign.builder()
                 .created(LocalDateTime.now())
                 .world(World.WITCHER)
                 .name("My first campaign")
+                .notes(new ArrayList<>())
+                .players(List.of(player))
                 .build();
         Session session = Session.builder()
                 .campaign(myFirstCampaign)
                 .characters(List.of(createRemia()))
                 .created(LocalDateTime.now())
                 .summary("The first session of madness")
+                .notes(new ArrayList<>())
+                .combats(new ArrayList<>())
                 .build();
         myFirstCampaign.setSessions(List.of(session));
-        System.out.println(myFirstCampaign);
-
-        campaignRepository.saveAndFlush(campaignTransformer.transformCampaignToCampaignEntity(myFirstCampaign));
+        myFirstCampaign.getSessions().get(0).getCharacters().get(0).setOwner(player);
+//        System.out.println(myFirstCampaign);
+        CampaignEntity campaignEntity = campaignTransformer.transformCampaignToCampaignEntity(myFirstCampaign);
+        campaignRepository.saveAndFlush(campaignEntity);
 
 
     }
@@ -83,6 +98,9 @@ public class TestDataService {
                 .coreSkills(Map.of(WitcherSkills.AWARENESS, 2, WitcherSkills.BUSINESS, 2, WitcherSkills.EDUCATION, 3, WitcherSkills.DEDUCTION, 1,
                         WitcherSkills.STREETWISE, 5, WitcherSkills.DODGEESCAPE, 3, WitcherSkills.ARCHERY, 4, WitcherSkills.ATHLETICS, 4,
                         WitcherSkills.CROSSBOW, 1, WitcherSkills.PHYSIQUE, 4))
+                .professionSkills(Map.of(WitcherProfessionSkills.HEALINGHANDS, 1))
+                .status(Status.ALIVE)
+                .storyTellerNotes(new ArrayList<>())
                 .build();
         return remia;
     }

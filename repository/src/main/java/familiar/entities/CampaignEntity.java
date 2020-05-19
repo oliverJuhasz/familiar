@@ -1,6 +1,6 @@
 package familiar.entities;
 
-import familiar.service.campaign.domain.World;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Table(name = "`Campaigns`")
 public class CampaignEntity {
@@ -27,9 +28,8 @@ public class CampaignEntity {
     @Column(name = "`Description`", columnDefinition = "TEXT")
     private String description;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "`World`", nullable = false)
-    private World world;
+    private String world;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Campaigns_Players`",
@@ -48,4 +48,14 @@ public class CampaignEntity {
             joinColumns = @JoinColumn(name = "CampaignID"),
             inverseJoinColumns = @JoinColumn(name = "NoteId"))
     private List<NoteEntity> notes;
+
+    @Override
+    public String toString() {
+        return "CampaignEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", world='" + world + '\'' +
+                '}';
+    }
 }

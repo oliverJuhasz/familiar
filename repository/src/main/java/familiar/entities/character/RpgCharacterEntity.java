@@ -3,8 +3,6 @@ package familiar.entities.character;
 
 import familiar.entities.NoteEntity;
 import familiar.entities.PlayerEntity;
-import familiar.service.character.domain.Gender;
-import familiar.service.character.domain.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,25 +24,25 @@ public abstract class RpgCharacterEntity {
     @Column(name = "`RpgCharacterID`")
     protected long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     protected PlayerEntity owner;
 
     @Column(name = "`Created`")
     protected LocalDateTime created;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     protected NameEntity nameEntity;
 
     @Column(name = "`Gender`")
-    protected Gender gender;
+    protected String gender;
 
     @Column(name = "`Age`")
     protected int age;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     protected List<NoteEntity> storyTellerNotes;
 
     @Column(name = "`Status`")
-    protected Status status;
+    protected String status;
 
 }

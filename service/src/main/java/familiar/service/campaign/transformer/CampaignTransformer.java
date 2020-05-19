@@ -31,7 +31,7 @@ public class CampaignTransformer {
                 .name(from.getName())
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))
                 .players(playerTransformer.transformPlayerToPlayerEntity(from.getPlayers()))
-                .world(from.getWorld())
+                .world(from.getWorld().toString())
                 .build();
         to.setSessions(sessionTransformer.transformSessionToSessionEntity(from.getSessions(), to));
         return to;
@@ -47,7 +47,7 @@ public class CampaignTransformer {
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))
                 .players(playerTransformer.transformPlayerToPlayerEntity(from.getPlayers()))
                 .sessions(sessionTransformer.transformSessionToSessionEntity(from.getSessions()))
-                .world(from.getWorld())
+                .world(from.getWorld().toString())
                 .build();
         return to;
     }
