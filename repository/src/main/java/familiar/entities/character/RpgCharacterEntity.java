@@ -2,7 +2,7 @@ package familiar.entities.character;
 
 
 import familiar.entities.NoteEntity;
-import familiar.entities.PlayerEntity;
+import familiar.entities.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +25,7 @@ public abstract class RpgCharacterEntity {
     protected long id;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    protected PlayerEntity owner;
+    protected UserEntity owner;
 
     @Column(name = "`Created`")
     protected LocalDateTime created;

@@ -14,8 +14,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 //@ToString
+@Builder
 public class Campaign {
 
     private Long id;

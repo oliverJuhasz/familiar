@@ -1,7 +1,7 @@
 package familiar.entities.character.witcher;
 
 import familiar.entities.NoteEntity;
-import familiar.entities.PlayerEntity;
+import familiar.entities.UserEntity;
 import familiar.entities.character.NameEntity;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class WitcherCharacterEntity extends familiar.entities.character.RpgCharacterEntity {
 
     @Builder
-    public WitcherCharacterEntity(long id, PlayerEntity owner, LocalDateTime created, NameEntity nameEntity, String gender,
+    public WitcherCharacterEntity(long id, UserEntity owner, LocalDateTime created, NameEntity nameEntity, String gender,
                                   int age, List<NoteEntity> storyTellerNotes, String status, Map<String, Integer> coreAbilities,
                                   Map<String, Integer> coreSkills, Map<String, Integer> professionSkills, String race,
                                   String profession) {

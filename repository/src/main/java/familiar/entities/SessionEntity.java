@@ -2,7 +2,6 @@ package familiar.entities;
 
 import familiar.entities.character.RpgCharacterEntity;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +12,6 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "`Sessions`")
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class SessionEntity {

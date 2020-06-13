@@ -1,7 +1,6 @@
 package familiar.entities;
 
 import familiar.entities.character.RpgCharacterEntity;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -21,7 +20,6 @@ import java.util.List;
 @Table(name = "`Players`")
 public class PlayerEntity extends UserEntity {
 
-    @Builder
     public PlayerEntity(long id, String userName, String password, LocalDateTime created, String name,
                         List<CampaignEntity> campaigns, List<RpgCharacterEntity> characters) {
         super(id, userName, password, created);

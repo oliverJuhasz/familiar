@@ -2,7 +2,7 @@ package familiar.service.character.domain;
 
 
 import familiar.service.note.domain.Note;
-import familiar.service.user.domain.Player;
+import familiar.service.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ import java.util.List;
 public abstract class RpgCharacter {
 
     protected long id;
-    protected Player owner;
+    protected User owner;
     protected LocalDateTime created;
     protected Name name;
     protected Gender gender;

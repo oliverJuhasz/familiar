@@ -1,12 +1,13 @@
 package familiar.service.user.domain;
 
-import familiar.entities.UserEntity;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Player extends UserEntity {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Player extends User {
 
     private String name;
 

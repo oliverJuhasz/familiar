@@ -1,12 +1,10 @@
 package familiar.service.campaign.service;
 
 import familiar.dao.CampaignRepository;
-import familiar.dao.SessionRepository;
-import familiar.entities.SessionEntity;
+import familiar.entities.CampaignEntity;
 import familiar.service.campaign.domain.Campaign;
 import familiar.service.campaign.domain.World;
 import familiar.service.campaign.transformer.CampaignMapper;
-import familiar.service.campaign.transformer.CampaignTransformer;
 import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
 import familiar.service.character.domain.Gender;
 import familiar.service.character.domain.Name;
@@ -18,7 +16,6 @@ import familiar.service.character.domain.witcher.WitcherStats;
 import familiar.service.character.domain.witcher.profession.WitcherProfession;
 import familiar.service.character.domain.witcher.profession.WitcherProfessionSkills;
 import familiar.service.session.domain.Session;
-import familiar.service.session.transformer.SessionTransformer;
 import familiar.service.user.domain.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,17 +29,9 @@ import java.util.Map;
 @Service
 public class TestDataService {
 
-    @Autowired
-    private CampaignTransformer campaignTransformer;
 
     @Autowired
     private CampaignRepository campaignRepository;
-
-    @Autowired
-    private SessionRepository sessionRepository;
-
-    @Autowired
-    private SessionTransformer sessionTransformer;
 
     @Autowired
     CampaignMapper campaignMapper;
@@ -53,29 +42,32 @@ public class TestDataService {
         player.setCreated(LocalDateTime.now());
         player.setPassword("abcd");
         player.setUserName("Bloodpotato");
+
+        WitcherCharacter witcherCharacter = createRemia();
+        witcherCharacter.setOwner(player);
+
         Campaign myFirstCampaign = Campaign.builder()
                 .created(LocalDateTime.now())
                 .world(World.WITCHER)
                 .name("My first campaign")
                 .notes(new ArrayList<>())
+                .description("A very peculiar descriptive description")
                 .players(List.of(player))
                 .build();
         Session session = Session.builder()
                 .campaign(myFirstCampaign)
-//                .characters(new ArrayList<>())
+                .characters(List.of(witcherCharacter))
                 .created(LocalDateTime.now())
                 .summary("The first session of madness")
                 .notes(new ArrayList<>())
                 .combats(new ArrayList<>())
                 .build();
+
+
         myFirstCampaign.setSessions(List.of(session));
-//        myFirstCampaign.getSessions().get(0).getCharacters().get(0).setOwner(player);
-        campaignMapper.campaignToCampaignEntity(myFirstCampaign, new CycleAvoidingMappingContext());
-//        System.out.println(myFirstCampaign);
-//        CampaignEntity campaignEntity = campaignTransformer.transformCampaignToCampaignEntity(myFirstCampaign);
-//        campaignRepository.saveAndFlush(campaignEntity);
-        SessionEntity sessionEntity = sessionTransformer.transformSessionToSessionEntity(session);
-        sessionRepository.saveAndFlush(sessionEntity);
+        CampaignEntity campaignEntity = campaignMapper.campaignToCampaignEntity(myFirstCampaign, new CycleAvoidingMappingContext());
+        campaignRepository.saveAndFlush(campaignEntity);
+        System.out.println("eheheh");
 
     }
 

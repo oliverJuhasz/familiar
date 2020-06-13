@@ -1,6 +1,7 @@
-package familiar.service.campaign.transformer;
+package familiar.service.note.transformer;
 
 import familiar.entities.NoteEntity;
+import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
 import familiar.service.note.domain.Note;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
