@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Mapper(componentModel = "spring")
-public class UserMapper {
+public abstract class UserMapper {
 
     public UserEntity userToUserEntity(User user, @Context CycleAvoidingMappingContext context) {
         UserEntity target = context.getMappedInstance(user, UserEntity.class);
