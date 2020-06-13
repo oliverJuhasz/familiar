@@ -1,10 +1,13 @@
 package familiar.service.campaign.service;
 
 import familiar.dao.CampaignRepository;
-import familiar.entities.CampaignEntity;
+import familiar.dao.SessionRepository;
+import familiar.entities.SessionEntity;
 import familiar.service.campaign.domain.Campaign;
 import familiar.service.campaign.domain.World;
+import familiar.service.campaign.transformer.CampaignMapper;
 import familiar.service.campaign.transformer.CampaignTransformer;
+import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
 import familiar.service.character.domain.Gender;
 import familiar.service.character.domain.Name;
 import familiar.service.character.domain.Status;
@@ -15,6 +18,7 @@ import familiar.service.character.domain.witcher.WitcherStats;
 import familiar.service.character.domain.witcher.profession.WitcherProfession;
 import familiar.service.character.domain.witcher.profession.WitcherProfessionSkills;
 import familiar.service.session.domain.Session;
+import familiar.service.session.transformer.SessionTransformer;
 import familiar.service.user.domain.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +34,18 @@ public class TestDataService {
 
     @Autowired
     private CampaignTransformer campaignTransformer;
+
     @Autowired
     private CampaignRepository campaignRepository;
+
+    @Autowired
+    private SessionRepository sessionRepository;
+
+    @Autowired
+    private SessionTransformer sessionTransformer;
+
+    @Autowired
+    CampaignMapper campaignMapper;
 
     public void addTestData() {
         Player player = new Player();
@@ -48,18 +62,20 @@ public class TestDataService {
                 .build();
         Session session = Session.builder()
                 .campaign(myFirstCampaign)
-                .characters(List.of(createRemia()))
+//                .characters(new ArrayList<>())
                 .created(LocalDateTime.now())
                 .summary("The first session of madness")
                 .notes(new ArrayList<>())
                 .combats(new ArrayList<>())
                 .build();
         myFirstCampaign.setSessions(List.of(session));
-        myFirstCampaign.getSessions().get(0).getCharacters().get(0).setOwner(player);
+//        myFirstCampaign.getSessions().get(0).getCharacters().get(0).setOwner(player);
+        campaignMapper.campaignToCampaignEntity(myFirstCampaign, new CycleAvoidingMappingContext());
 //        System.out.println(myFirstCampaign);
-        CampaignEntity campaignEntity = campaignTransformer.transformCampaignToCampaignEntity(myFirstCampaign);
-        campaignRepository.saveAndFlush(campaignEntity);
-
+//        CampaignEntity campaignEntity = campaignTransformer.transformCampaignToCampaignEntity(myFirstCampaign);
+//        campaignRepository.saveAndFlush(campaignEntity);
+        SessionEntity sessionEntity = sessionTransformer.transformSessionToSessionEntity(session);
+        sessionRepository.saveAndFlush(sessionEntity);
 
     }
 

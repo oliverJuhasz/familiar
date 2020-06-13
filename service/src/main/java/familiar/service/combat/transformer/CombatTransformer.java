@@ -2,8 +2,6 @@ package familiar.service.combat.transformer;
 
 import familiar.entities.CombatEntity;
 import familiar.entities.SessionEntity;
-import familiar.entities.character.RpgCharacterEntity;
-import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.character.transformer.RpgCharacterTransformer;
 import familiar.service.combat.domain.Combat;
 import familiar.service.note.transformer.NoteTransformer;
@@ -29,7 +27,7 @@ public class CombatTransformer {
     public CombatEntity transformCombatToCombatEntity(Combat from) {
         CombatEntity to = CombatEntity
                 .builder()
-                .characters((List<RpgCharacterEntity>) witcherCharacterTransformer.transformRpgCharacterToRpgCharacterEntity((WitcherCharacter) from.getCharacters()))
+//                .characters((List<RpgCharacterEntity>) witcherCharacterTransformer.transformRpgCharacterToRpgCharacterEntity((WitcherCharacter) from.getCharacters()))
                 .description(from.getDescription())
                 .id(from.getId())
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))
@@ -41,7 +39,7 @@ public class CombatTransformer {
     public CombatEntity transformCombatToCombatEntity(Combat from, SessionEntity session) {
         CombatEntity to = CombatEntity
                 .builder()
-                .characters((List<RpgCharacterEntity>) witcherCharacterTransformer.transformRpgCharacterToRpgCharacterEntity((WitcherCharacter) from.getCharacters()))
+//                .characters((List<RpgCharacterEntity>) witcherCharacterTransformer.transformRpgCharacterToRpgCharacterEntity((WitcherCharacter) from.getCharacters()))
                 .description(from.getDescription())
                 .id(from.getId())
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))

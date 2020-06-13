@@ -4,14 +4,14 @@ import familiar.service.campaign.domain.Campaign;
 import familiar.service.character.domain.RpgCharacter;
 import familiar.service.combat.domain.Combat;
 import familiar.service.note.domain.Note;
-import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Builder
+@SuperBuilder
 public class Session {
 
     private long id;

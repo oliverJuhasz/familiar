@@ -2,6 +2,7 @@ package familiar.service.character.transformer;
 
 import familiar.entities.character.RpgCharacterEntity;
 import familiar.entities.character.witcher.WitcherCharacterEntity;
+import familiar.service.campaign.transformer.NameTransformer;
 import familiar.service.character.domain.RpgCharacter;
 import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.note.transformer.NoteTransformer;

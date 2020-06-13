@@ -29,13 +29,13 @@ public class SessionTransformer {
     //TODO: Fix casts
     public SessionEntity transformSessionToSessionEntity(Session from) {
         SessionEntity to = SessionEntity.builder()
-                .campaign(campaignTransformer.transformCampaignToCampaignEntity(from.getCampaign()))
-                .characters(rpgCharacterTransformer.transformRpgCharacterToRpgCharacterEntity(from.getCharacters()))
+//                .characters(rpgCharacterTransformer.transformRpgCharacterToRpgCharacterEntity(from.getCharacters()))
                 .created(from.getCreated())
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))
                 .id(from.getId())
                 .summary(from.getSummary())
                 .build();
+        to.setCampaign(campaignTransformer.transformCampaignToCampaignEntity(from.getCampaign()));
         to.setCombats(combatTransformer.transformCombatToCombatEntity(from.getCombats(), to));
         return to;
     }
@@ -43,7 +43,7 @@ public class SessionTransformer {
     public SessionEntity transformSessionToSessionEntity(Session from, CampaignEntity campaign) {
         SessionEntity to = SessionEntity.builder()
                 .campaign(campaign)
-                .characters(rpgCharacterTransformer.transformRpgCharacterToRpgCharacterEntity(from.getCharacters()))
+//                .characters(rpgCharacterTransformer.transformRpgCharacterToRpgCharacterEntity(from.getCharacters()))
                 .created(from.getCreated())
                 .notes(noteTransformer.transformNoteToNoteEntity(from.getNotes()))
                 .id(from.getId())

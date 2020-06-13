@@ -1,4 +1,4 @@
-package familiar.service.character.transformer;
+package familiar.service.campaign.transformer;
 
 import familiar.entities.character.NameEntity;
 import familiar.service.character.domain.Name;
