@@ -7,9 +7,7 @@ import familiar.service.user.domain.Player;
 import familiar.service.user.domain.User;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
-import org.springframework.stereotype.Service;
 
-@Service
 @Mapper(componentModel = "spring")
 public abstract class UserMapper {
 
