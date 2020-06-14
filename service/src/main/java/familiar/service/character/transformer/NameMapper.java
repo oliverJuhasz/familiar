@@ -13,4 +13,6 @@ public interface NameMapper {
 
     NameEntity convertNameToNameEntity(Name name, @Context CycleAvoidingMappingContext context);
 
+    Name convertNameEntityToName(NameEntity nameEntity, @Context CycleAvoidingMappingContext context);
+
 }
