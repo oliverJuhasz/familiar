@@ -15,4 +15,6 @@ public interface CombatMapper {
 
     CombatEntity convertCombatToCombatEntity(Combat combat, @Context CycleAvoidingMappingContext context);
 
+    Combat convertCombatEntityToCombat(CombatEntity combatEntity, @Context CycleAvoidingMappingContext context);
+
 }
