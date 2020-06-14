@@ -14,5 +14,6 @@ public interface CampaignMapper {
 
     CampaignEntity campaignToCampaignEntity(Campaign campaign, @Context CycleAvoidingMappingContext context);
 
+    Campaign campaignEntityToCampaign(CampaignEntity campaignEntity, @Context CycleAvoidingMappingContext context);
 
 }
