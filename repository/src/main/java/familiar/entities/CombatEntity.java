@@ -27,13 +27,13 @@ public class CombatEntity {
     @Column(name = "`Description`", columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Combats_Notes`",
             joinColumns = @JoinColumn(name = "`CombatID`"),
             inverseJoinColumns = @JoinColumn(name = "`NoteID`"))
     private List<NoteEntity> notes;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Combats_Characters`",
             joinColumns = @JoinColumn(name = "`CombatID`"),
             inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
