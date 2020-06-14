@@ -8,6 +8,7 @@ import familiar.service.campaign.transformer.CampaignMapper;
 import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
 import familiar.service.character.domain.Gender;
 import familiar.service.character.domain.Name;
+import familiar.service.character.domain.RpgCharacter;
 import familiar.service.character.domain.Status;
 import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.character.domain.witcher.WitcherRace;
@@ -15,6 +16,8 @@ import familiar.service.character.domain.witcher.WitcherSkills;
 import familiar.service.character.domain.witcher.WitcherStats;
 import familiar.service.character.domain.witcher.profession.WitcherProfession;
 import familiar.service.character.domain.witcher.profession.WitcherProfessionSkills;
+import familiar.service.combat.domain.Combat;
+import familiar.service.note.domain.Note;
 import familiar.service.session.domain.Session;
 import familiar.service.user.domain.Player;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +49,12 @@ public class TestDataService {
         WitcherCharacter witcherCharacter = createRemia();
         witcherCharacter.setOwner(player);
 
+        List<RpgCharacter> characters = List.of(witcherCharacter);
         Campaign myFirstCampaign = Campaign.builder()
                 .created(LocalDateTime.now())
                 .world(World.WITCHER)
                 .name("My first campaign")
-                .notes(new ArrayList<>())
+                .notes(List.of(new Note(0, "First note", "note text", LocalDateTime.now()), new Note(0, "second note", "second note text", LocalDateTime.now())))
                 .description("A very peculiar descriptive description")
                 .players(List.of(player))
                 .build();
@@ -59,11 +63,17 @@ public class TestDataService {
                 .characters(List.of(witcherCharacter))
                 .created(LocalDateTime.now())
                 .summary("The first session of madness")
-                .notes(new ArrayList<>())
+                .notes(List.of(new Note(0, "First note", "note text", LocalDateTime.now()), new Note(0, "second note", "second note text", LocalDateTime.now())))
                 .combats(new ArrayList<>())
                 .build();
 
-
+        Combat combat = Combat.builder()
+                .description("A very epic battle")
+                .session(session)
+                .notes(List.of(new Note(0, "Combat note", "Combat note text", LocalDateTime.now())))
+                .characters(List.of(witcherCharacter))
+                .build();
+        session.setCombats(List.of(combat));
         myFirstCampaign.setSessions(List.of(session));
         CampaignEntity campaignEntity = campaignMapper.campaignToCampaignEntity(myFirstCampaign, new CycleAvoidingMappingContext());
         campaignRepository.saveAndFlush(campaignEntity);
@@ -109,6 +119,7 @@ public class TestDataService {
                 .professionSkills(Map.of(WitcherProfessionSkills.HEALINGHANDS, 1))
                 .status(Status.ALIVE)
                 .storyTellerNotes(new ArrayList<>())
+                .created(LocalDateTime.now())
                 .build();
         return remia;
     }
