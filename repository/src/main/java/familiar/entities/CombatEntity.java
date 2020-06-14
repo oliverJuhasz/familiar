@@ -4,6 +4,7 @@ import familiar.entities.character.RpgCharacterEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -31,12 +32,14 @@ public class CombatEntity {
     @JoinTable(name = "`Combats_Notes`",
             joinColumns = @JoinColumn(name = "`CombatID`"),
             inverseJoinColumns = @JoinColumn(name = "`NoteID`"))
+    @ToString.Exclude
     private List<NoteEntity> notes;
 
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Combats_Characters`",
             joinColumns = @JoinColumn(name = "`CombatID`"),
             inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
+    @ToString.Exclude
     private List<RpgCharacterEntity> characters;
 
 }

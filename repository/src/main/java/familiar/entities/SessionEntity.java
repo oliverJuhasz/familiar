@@ -4,6 +4,7 @@ import familiar.entities.character.RpgCharacterEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,18 +26,21 @@ public class SessionEntity {
     @JoinTable(name = "`Sessions_Characters`",
             joinColumns = @JoinColumn(name = "`SessionID`"),
             inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
+    @ToString.Exclude
     private List<RpgCharacterEntity> characters;
 
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Sessions_Notes`",
             joinColumns = @JoinColumn(name = "`SessionID`"),
             inverseJoinColumns = @JoinColumn(name = "`NoteID`"))
+    @ToString.Exclude
     private List<NoteEntity> notes;
 
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Sessions_Combats`",
             joinColumns = @JoinColumn(name = "SessionID"),
             inverseJoinColumns = @JoinColumn(name = "CombatID"))
+    @ToString.Exclude
     private List<CombatEntity> combats;
 
     @Column(name = "`Created`", nullable = false)
