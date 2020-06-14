@@ -8,7 +8,6 @@ import familiar.service.campaign.transformer.CampaignMapper;
 import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
 import familiar.service.character.domain.Gender;
 import familiar.service.character.domain.Name;
-import familiar.service.character.domain.RpgCharacter;
 import familiar.service.character.domain.Status;
 import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.character.domain.witcher.WitcherRace;
@@ -46,10 +45,10 @@ public class TestDataService {
         player.setPassword("abcd");
         player.setUserName("Bloodpotato");
 
-        WitcherCharacter witcherCharacter = createRemia();
-        witcherCharacter.setOwner(player);
+        WitcherCharacter remia = createRemia();
+        WitcherCharacter thorim = createThorim();
+        remia.setOwner(player);
 
-        List<RpgCharacter> characters = List.of(witcherCharacter);
         Campaign myFirstCampaign = Campaign.builder()
                 .created(LocalDateTime.now())
                 .world(World.WITCHER)
@@ -60,7 +59,7 @@ public class TestDataService {
                 .build();
         Session session = Session.builder()
                 .campaign(myFirstCampaign)
-                .characters(List.of(witcherCharacter))
+                .characters(List.of(remia, thorim))
                 .created(LocalDateTime.now())
                 .summary("The first session of madness")
                 .notes(List.of(new Note(0, "First note", "note text", LocalDateTime.now()), new Note(0, "second note", "second note text", LocalDateTime.now())))
@@ -71,13 +70,14 @@ public class TestDataService {
                 .description("A very epic battle")
                 .session(session)
                 .notes(List.of(new Note(0, "Combat note", "Combat note text", LocalDateTime.now())))
-                .characters(List.of(witcherCharacter))
+                .characters(List.of(remia, thorim))
                 .build();
         session.setCombats(List.of(combat));
         myFirstCampaign.setSessions(List.of(session));
         CampaignEntity campaignEntity = campaignMapper.campaignToCampaignEntity(myFirstCampaign, new CycleAvoidingMappingContext());
         campaignRepository.saveAndFlush(campaignEntity);
-        System.out.println("eheheh");
+        System.out.println(campaignRepository.findById(1L));
+        System.out.println("heyhey");
 
     }
 
@@ -113,14 +113,46 @@ public class TestDataService {
                 .coreAbilities(Map.of(WitcherStats.INTELLIGENCE, 9, WitcherStats.REFLEXES, 7, WitcherStats.DEXTERITY, 8,
                         WitcherStats.BODY, 6, WitcherStats.SPEED, 5, WitcherStats.EMPATHY, 7, WitcherStats.CRAFT, 9,
                         WitcherStats.WILL, 6, WitcherStats.LUCK, 3))
-                .coreSkills(Map.of(WitcherSkills.AWARENESS, 2, WitcherSkills.BUSINESS, 2, WitcherSkills.EDUCATION, 3, WitcherSkills.DEDUCTION, 1,
-                        WitcherSkills.STREETWISE, 5, WitcherSkills.DODGEESCAPE, 3, WitcherSkills.ARCHERY, 4, WitcherSkills.ATHLETICS, 4,
-                        WitcherSkills.CROSSBOW, 1, WitcherSkills.PHYSIQUE, 4))
+                .coreSkills(remiaCoreSkills)
                 .professionSkills(Map.of(WitcherProfessionSkills.HEALINGHANDS, 1))
                 .status(Status.ALIVE)
                 .storyTellerNotes(new ArrayList<>())
                 .created(LocalDateTime.now())
                 .build();
         return remia;
+    }
+
+    private WitcherCharacter createThorim() {
+        Map<WitcherSkills, Integer> thorimCoreSkills = new HashMap<>();
+        thorimCoreSkills.put(WitcherSkills.AWARENESS, 6);
+        thorimCoreSkills.put(WitcherSkills.BUSINESS, 1);
+        thorimCoreSkills.put(WitcherSkills.MONSTERLORE, 2);
+        thorimCoreSkills.put(WitcherSkills.STREETWISE, 6);
+        thorimCoreSkills.put(WitcherSkills.SLEIGHTOFHAND, 1);
+        thorimCoreSkills.put(WitcherSkills.STEALTH, 6);
+        thorimCoreSkills.put(WitcherSkills.PHYSIQUE, 2);
+        thorimCoreSkills.put(WitcherSkills.ENDURANCE, 2);
+        thorimCoreSkills.put(WitcherSkills.DECEIT, 6);
+        thorimCoreSkills.put(WitcherSkills.FORGERY, 3);
+        thorimCoreSkills.put(WitcherSkills.PICKLOCK, 2);
+        thorimCoreSkills.put(WitcherSkills.COURAGE, 6);
+        thorimCoreSkills.put(WitcherSkills.INTIMIDATION, 6);
+
+        WitcherCharacter thorim = WitcherCharacter.builder()
+                .name(Name.builder().firstName("Thorim").build())
+                .gender(Gender.MALE)
+                .race(WitcherRace.DWARF)
+                .age(331)
+                .profession(WitcherProfession.CRIMINAL)
+                .coreAbilities(Map.of(WitcherStats.INTELLIGENCE, 8, WitcherStats.REFLEXES, 8, WitcherStats.DEXTERITY, 5,
+                        WitcherStats.BODY, 10, WitcherStats.SPEED, 5, WitcherStats.EMPATHY, 5, WitcherStats.CRAFT, 2,
+                        WitcherStats.WILL, 8, WitcherStats.LUCK, 11))
+                .coreSkills(thorimCoreSkills)
+                .professionSkills(Map.of(WitcherProfessionSkills.PRACTICEDPARANOIA, 1))
+                .status(Status.ALIVE)
+                .storyTellerNotes(new ArrayList<>())
+                .created(LocalDateTime.now())
+                .build();
+        return thorim;
     }
 }
