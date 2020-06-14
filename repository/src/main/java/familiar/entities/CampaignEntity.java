@@ -1,8 +1,6 @@
 package familiar.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +10,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "`Campaigns`")
 public class CampaignEntity {
 
@@ -33,18 +32,21 @@ public class CampaignEntity {
     @JoinTable(name = "`Campaigns_Players`",
             joinColumns = @JoinColumn(name = "`CampaignID`"),
             inverseJoinColumns = @JoinColumn(name = "`PlayerID`"))
+    @ToString.Exclude
     private List<PlayerEntity> players;
 
     @Column(name = "`Created`", nullable = false)
     private LocalDateTime created;
 
     @OneToMany(mappedBy = "campaign", cascade = CascadeType.PERSIST)
+    @ToString.Exclude
     private List<SessionEntity> sessions;
 
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "`Campaigns_Notes`",
             joinColumns = @JoinColumn(name = "CampaignID"),
             inverseJoinColumns = @JoinColumn(name = "NoteId"))
+    @ToString.Exclude
     private List<NoteEntity> notes;
 
     @Override
