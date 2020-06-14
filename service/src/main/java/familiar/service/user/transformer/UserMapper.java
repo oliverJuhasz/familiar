@@ -33,6 +33,7 @@ public abstract class UserMapper {
         } else {
             userEntity = null;
         }
+        context.storeMappedInstance(userEntity, UserEntity.class);
         return userEntity;
     }
 

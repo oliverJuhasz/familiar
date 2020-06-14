@@ -58,6 +58,7 @@ public abstract class RpgCharacterMapper {
                         .map(note -> noteMapper.convertNoteToNoteEntity(note, context))
                         .collect(Collectors.toList()))
                 .build();
+        context.storeMappedInstance(character, RpgCharacter.class);
         return character;
     }
 
