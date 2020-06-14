@@ -37,4 +37,30 @@ public abstract class UserMapper {
         return userEntity;
     }
 
+    public User userEntityToUser(UserEntity userEntity, @Context CycleAvoidingMappingContext context) {
+        User target = context.getMappedInstance(userEntity, User.class);
+        if (target != null) {
+            return target;
+        }
+
+        if (userEntity == null) {
+            return null;
+        }
+
+
+        User user;
+        if (userEntity instanceof PlayerEntity) {
+            Player player = new Player();
+            player.setUserName(userEntity.getUserName());
+            player.setName(((PlayerEntity) userEntity).getName());
+            player.setCreated(userEntity.getCreated());
+            player.setPassword(userEntity.getPassword());
+            user = player;
+        } else {
+            user = null;
+        }
+        context.storeMappedInstance(user, User.class);
+        return user;
+    }
+
 }
