@@ -21,8 +21,10 @@ public class SessionEntity {
     @Column(name = "`SessionID`")
     private long id;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "`FK_CharacterID`")
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "`Sessions_Characters`",
+            joinColumns = @JoinColumn(name = "`SessionID`"),
+            inverseJoinColumns = @JoinColumn(name = "`CharacterID`"))
     private List<RpgCharacterEntity> characters;
 
     @OneToMany(cascade = CascadeType.PERSIST)
