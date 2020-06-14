@@ -4,10 +4,7 @@ import familiar.service.campaign.domain.Campaign;
 import familiar.service.character.domain.RpgCharacter;
 import familiar.service.combat.domain.Combat;
 import familiar.service.note.domain.Note;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,9 +16,16 @@ import java.util.List;
 public class Session {
 
     private long id;
+
+    @ToString.Exclude
     private List<RpgCharacter> characters;
+
+    @ToString.Exclude
     private List<Note> notes;
+
+    @ToString.Exclude
     private List<Combat> combats;
+
     private LocalDateTime created;
     private Campaign campaign;
     private String summary;
