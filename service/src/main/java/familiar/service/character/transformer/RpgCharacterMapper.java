@@ -40,7 +40,7 @@ public abstract class RpgCharacterMapper {
         }
 
         WitcherCharacter from = (WitcherCharacter) rpgCharacter;
-        RpgCharacterEntity character = WitcherCharacterEntity.builder()
+        RpgCharacterEntity characterEntity = WitcherCharacterEntity.builder()
                 .age(from.getAge())
                 .coreAbilities(convertKeyToString(from.getCoreAbilities()))
                 .coreSkills(convertKeyToString(from.getCoreSkills()))
@@ -58,8 +58,8 @@ public abstract class RpgCharacterMapper {
                         .map(note -> noteMapper.convertNoteToNoteEntity(note, context))
                         .collect(Collectors.toList()))
                 .build();
-        context.storeMappedInstance(character, RpgCharacter.class);
-        return character;
+        context.storeMappedInstance(rpgCharacter, characterEntity);
+        return characterEntity;
     }
 
     private Map<String, Integer> convertKeyToString(Map<?, Integer> abilities) {
