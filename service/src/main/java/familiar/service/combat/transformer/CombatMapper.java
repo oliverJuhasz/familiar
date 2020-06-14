@@ -13,8 +13,8 @@ import org.mapstruct.Mapper;
         builder = @Builder(disableBuilder = true))
 public interface CombatMapper {
 
-    CombatEntity convertCombatToCombatEntity(Combat combat, @Context CycleAvoidingMappingContext context);
+    CombatEntity combatToCombatEntity(Combat combat, @Context CycleAvoidingMappingContext context);
 
-    Combat convertCombatEntityToCombat(CombatEntity combatEntity, @Context CycleAvoidingMappingContext context);
+    Combat combatEntityToCombat(CombatEntity combatEntity, @Context CycleAvoidingMappingContext context);
 
 }

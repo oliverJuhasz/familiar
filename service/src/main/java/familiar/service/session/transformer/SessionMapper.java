@@ -15,4 +15,6 @@ public interface SessionMapper {
 
     SessionEntity sessionToSessionEntity(Session session, @Context CycleAvoidingMappingContext context);
 
+    Session sessionEntityToSession(SessionEntity sessionEntity, @Context CycleAvoidingMappingContext context);
+
 }

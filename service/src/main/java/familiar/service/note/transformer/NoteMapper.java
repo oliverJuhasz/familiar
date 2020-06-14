@@ -13,4 +13,6 @@ public interface NoteMapper {
 
     NoteEntity convertNoteToNoteEntity(Note note, @Context CycleAvoidingMappingContext context);
 
+    Note noteEntityToNote(NoteEntity noteEntity, @Context CycleAvoidingMappingContext context);
+
 }
