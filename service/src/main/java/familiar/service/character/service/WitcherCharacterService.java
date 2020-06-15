@@ -35,6 +35,10 @@ public class WitcherCharacterService {
         return (WitcherCharacter) convertRpgCharacterEntityToRpgCharacter(rpgCharacterEntity);
     }
 
+    public void saveWitcherCharacter(WitcherCharacter witcherCharacter) {
+        rpgCharacterRepository.saveAndFlush(convertRpgCharacterToRpgCharacterEntity(witcherCharacter));
+    }
+
     private RpgCharacter convertRpgCharacterEntityToRpgCharacter(RpgCharacterEntity rpgCharacterEntity) {
         return rpgCharacterMapper.rpgCharacterEntityToRgpCharacter(rpgCharacterEntity, new CycleAvoidingMappingContext());
     }
