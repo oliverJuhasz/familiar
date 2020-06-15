@@ -4,6 +4,7 @@ import familiar.dao.RpgCharacterRepository;
 import familiar.entities.character.RpgCharacterEntity;
 import familiar.entities.character.witcher.WitcherCharacterEntity;
 import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
+import familiar.service.character.domain.RpgCharacter;
 import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.character.transformer.RpgCharacterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,15 @@ public class WitcherCharacterService {
         if (!(rpgCharacterEntity instanceof WitcherCharacterEntity)) {
             throw new IllegalArgumentException("Character is not a Witcher character!");
         }
-        return (WitcherCharacter) rpgCharacterMapper.rpgCharacterEntityToRgpCharacter(rpgCharacterEntity, new CycleAvoidingMappingContext());
+        return (WitcherCharacter) convertRpgCharacterEntityToRpgCharacter(rpgCharacterEntity);
     }
+
+    private RpgCharacter convertRpgCharacterEntityToRpgCharacter(RpgCharacterEntity rpgCharacterEntity) {
+        return rpgCharacterMapper.rpgCharacterEntityToRgpCharacter(rpgCharacterEntity, new CycleAvoidingMappingContext());
+    }
+
+    private RpgCharacterEntity convertRpgCharacterToRpgCharacterEntity(RpgCharacter rpgCharacter) {
+        return rpgCharacterMapper.rpgCharacterToRgpCharacterEntity(rpgCharacter, new CycleAvoidingMappingContext());
+    }
+
 }
