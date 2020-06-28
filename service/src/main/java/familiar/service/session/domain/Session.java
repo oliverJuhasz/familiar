@@ -28,6 +28,6 @@ public class Session {
 
     private LocalDateTime created;
     private Campaign campaign;
-    private String summary;
+    private Note summary;
 
 }

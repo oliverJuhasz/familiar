@@ -75,7 +75,7 @@ public class TestDataService {
                 .campaign(myFirstCampaign)
                 .characters(characters)
                 .created(LocalDateTime.now())
-                .summary("The first session of madness")
+                .summary(Note.builder().title("Azt mondták profik...").text("abc").created(LocalDateTime.now()).build())
                 .notes(List.of(new Note(0, "First note", "note text", LocalDateTime.now()), new Note(0, "second note", "second note text", LocalDateTime.now())))
                 .combats(new ArrayList<>())
                 .build();
@@ -90,9 +90,6 @@ public class TestDataService {
         myFirstCampaign.setSessions(List.of(session));
         CampaignEntity campaignEntity = campaignMapper.campaignToCampaignEntity(myFirstCampaign, new CycleAvoidingMappingContext());
         campaignRepository.saveAndFlush(campaignEntity);
-        WitcherCharacter witcherCharacterById = witcherCharacterService.findWitcherCharacterById(1);
-        witcherCharacterById.getName().setFirstName("ehehe");
-        witcherCharacterService.saveWitcherCharacter(witcherCharacterById);
 
     }
 

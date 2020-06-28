@@ -48,7 +48,8 @@ public class SessionEntity {
     @JoinColumn(name = "`FK_CampaignID`")
     private CampaignEntity campaign;
 
-    @Column(name = "`Summary`", columnDefinition = "TEXT")
-    private String summary;
-    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "`NoteID`")
+    private NoteEntity summary;
+
 }
