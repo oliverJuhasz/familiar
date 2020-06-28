@@ -7,17 +7,19 @@ import java.util.Random;
 @Service
 public class DiceService {
 
+    public static final String VALID_EXPRESSION = "^(([0-9]{1,3}[dD][0-9]{1,3}[\\+\\-](?=[0-9]))|((?<=.)[0-9]{1,3}[\\+\\-]?)|([0-9]{1,3}[dD][0-9]{1,3}))+$";
+    public static final String CONTAINS_DICE = "[0-9]+[dD][0-9]+";
+    public static final String INCORRECT_DICE_ERROR_MESSAGE = "Incorrect dice format entered!";
+
     public int evaluateDiceExpression(String diceExpression) {
-        if (!validateDice(diceExpression)) {
-            throw new IllegalArgumentException("Incorrect dice format entered!");
+        if (!validateDiceExpression(diceExpression)) {
+            throw new IllegalArgumentException(INCORRECT_DICE_ERROR_MESSAGE);
         }
         return diceExpressionParser(diceExpression);
-
-
     }
 
-    private boolean validateDice(String diceExpression) {
-        return diceExpression.matches("^(([0-9]{1,3}[dD][0-9]{1,3}[\\+\\-](?=[0-9]))|((?<=.)[0-9]{1,3}[\\+\\-]?)|([0-9]{1,3}[dD][0-9]{1,3}))+$");
+    private boolean validateDiceExpression(String diceExpression) {
+        return diceExpression.matches(VALID_EXPRESSION);
     }
 
     private int diceExpressionParser(String diceExpression) {
@@ -44,7 +46,7 @@ public class DiceService {
 
     private int evaluatePart(String diceExpressionPart) {
         int result;
-        if (diceExpressionPart.matches("[0-9]+[dD][0-9]+")) {
+        if (diceExpressionPart.matches(CONTAINS_DICE)) {
             result = rollDice(diceExpressionPart);
         } else {
             result = Integer.parseInt(diceExpressionPart);
