@@ -16,13 +16,15 @@ import familiar.service.note.transformer.NoteMapper;
 import familiar.service.user.transformer.UserMapper;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",
+        unmappedTargetPolicy = ReportingPolicy.ERROR)
 public abstract class RpgCharacterMapper {
 
     @Autowired

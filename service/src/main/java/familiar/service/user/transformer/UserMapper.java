@@ -7,8 +7,10 @@ import familiar.service.user.domain.Player;
 import familiar.service.user.domain.User;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",
+        unmappedTargetPolicy = ReportingPolicy.ERROR)
 public abstract class UserMapper {
 
     public UserEntity userToUserEntity(User user, @Context CycleAvoidingMappingContext context) {
