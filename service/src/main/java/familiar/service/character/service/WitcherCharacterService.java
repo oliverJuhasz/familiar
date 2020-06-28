@@ -6,6 +6,7 @@ import familiar.entities.character.witcher.WitcherCharacterEntity;
 import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
 import familiar.service.character.domain.RpgCharacter;
 import familiar.service.character.domain.witcher.WitcherCharacter;
+import familiar.service.character.domain.witcher.WitcherSkills;
 import familiar.service.character.transformer.RpgCharacterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,12 @@ public class WitcherCharacterService {
 
     public void saveWitcherCharacter(WitcherCharacter witcherCharacter) {
         rpgCharacterRepository.saveAndFlush(convertRpgCharacterToRpgCharacterEntity(witcherCharacter));
+    }
+
+    public int calculateAbilityLevel(WitcherCharacter witcherCharacter, WitcherSkills witcherSkill) {
+        int skillLevel = witcherCharacter.getCoreSkills().getOrDefault(witcherSkill, 0);
+        int statLevel = witcherCharacter.getCoreStatistics().get(witcherSkill.baseAbility);
+        return skillLevel + statLevel;
     }
 
     private RpgCharacter convertRpgCharacterEntityToRpgCharacter(RpgCharacterEntity rpgCharacterEntity) {
