@@ -21,14 +21,16 @@ import familiar.service.combat.domain.Combat;
 import familiar.service.note.domain.Note;
 import familiar.service.session.domain.Session;
 import familiar.service.user.domain.Player;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class TestDataService {
@@ -75,10 +77,42 @@ public class TestDataService {
                 .campaign(myFirstCampaign)
                 .characters(characters)
                 .created(LocalDateTime.now())
-                .summary(Note.builder().title("Azt mondták profik...").text("abc").created(LocalDateTime.now()).build())
-                .notes(List.of(new Note(0, "First note", "note text", LocalDateTime.now()), new Note(0, "second note", "second note text", LocalDateTime.now())))
+                .summary(processSessionSummary(new File(Objects.requireNonNull(getClass().getClassLoader().getResource("campaign_notes/campaign_note_1")).getFile())))
+                .held(LocalDate.of(2020, 5, 28))
+                .notes(new ArrayList<>())
                 .combats(new ArrayList<>())
                 .build();
+
+        Session session2 = Session.builder()
+                .campaign(myFirstCampaign)
+                .characters(characters)
+                .created(LocalDateTime.now())
+                .held(LocalDate.of(2020, 6, 4))
+                .summary(processSessionSummary(new File(Objects.requireNonNull(getClass().getClassLoader().getResource("campaign_notes/campaign_note_2")).getFile())))
+                .notes(new ArrayList<>())
+                .combats(new ArrayList<>())
+                .build();
+
+        Session session3 = Session.builder()
+                .campaign(myFirstCampaign)
+                .characters(characters)
+                .created(LocalDateTime.now())
+                .held(LocalDate.of(2020, 6, 18))
+                .summary(processSessionSummary(new File(Objects.requireNonNull(getClass().getClassLoader().getResource("campaign_notes/campaign_note_3")).getFile())))
+                .notes(new ArrayList<>())
+                .combats(new ArrayList<>())
+                .build();
+
+        Session session4 = Session.builder()
+                .campaign(myFirstCampaign)
+                .characters(characters)
+                .created(LocalDateTime.now())
+                .held(LocalDate.of(2020, 6, 25))
+                .summary(processSessionSummary(new File(Objects.requireNonNull(getClass().getClassLoader().getResource("campaign_notes/campaign_note_4")).getFile())))
+                .notes(new ArrayList<>())
+                .combats(new ArrayList<>())
+                .build();
+
 
         Combat combat = Combat.builder()
                 .description("A very epic battle")
@@ -87,7 +121,7 @@ public class TestDataService {
                 .characters(characters)
                 .build();
         session.setCombats(List.of(combat));
-        myFirstCampaign.setSessions(List.of(session));
+        myFirstCampaign.setSessions(List.of(session, session2, session3, session4));
         CampaignEntity campaignEntity = campaignMapper.campaignToCampaignEntity(myFirstCampaign, new CycleAvoidingMappingContext());
         campaignRepository.saveAndFlush(campaignEntity);
 
@@ -273,5 +307,23 @@ public class TestDataService {
                 .storyTellerNotes(new ArrayList<>())
                 .created(LocalDateTime.now())
                 .build();
+    }
+
+    @SneakyThrows
+    private Note processSessionSummary(File file) {
+        String title;
+        StringBuilder text = new StringBuilder();
+        String line;
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        title = br.readLine();
+        while ((line = br.readLine()) != null) {
+            text.append(line);
+        }
+        return Note.builder()
+                .created(LocalDateTime.now())
+                .title(title)
+                .text(text.toString())
+                .build();
+
     }
 }
