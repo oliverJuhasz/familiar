@@ -6,6 +6,7 @@ import familiar.service.combat.domain.Combat;
 import familiar.service.note.domain.Note;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class Session {
     private List<Combat> combats;
 
     private LocalDateTime created;
+    private LocalDate held;
     private Campaign campaign;
     private Note summary;
 

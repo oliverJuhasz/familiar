@@ -4,6 +4,7 @@ import familiar.entities.character.RpgCharacterEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -43,6 +44,9 @@ public class SessionEntity {
 
     @Column(name = "`Created`", nullable = false)
     private LocalDateTime created;
+
+    @Column(name = "`Held`", nullable = false)
+    private LocalDate held;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "`FK_CampaignID`")
