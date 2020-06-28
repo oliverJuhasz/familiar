@@ -7,6 +7,7 @@ import familiar.service.campaign.transformer.CycleAvoidingMappingContext;
 import familiar.service.character.domain.RpgCharacter;
 import familiar.service.character.domain.witcher.WitcherCharacter;
 import familiar.service.character.domain.witcher.WitcherSkills;
+import familiar.service.character.domain.witcher.profession.WitcherProfessionSkills;
 import familiar.service.character.transformer.RpgCharacterMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,10 +43,17 @@ public class WitcherCharacterService {
 
     public int calculateAbilityLevel(WitcherCharacter witcherCharacter, WitcherSkills witcherSkill) {
         int characterSkillLevel = witcherCharacter.getCoreSkills().getOrDefault(witcherSkill, 0);
-        int characterStatLevel = witcherCharacter.getCoreStatistics().get(witcherSkill.baseAbility);
+        int characterStatLevel = witcherCharacter.getCoreStatistics().getOrDefault(witcherSkill.baseAbility, 0);
         int characterRaceAbilityModifier = witcherCharacter.getRace().skills.getOrDefault(witcherSkill, 0);
         int characterRaceStatModifier = witcherCharacter.getRace().stats.getOrDefault(witcherSkill.baseAbility, 0);
         return characterSkillLevel + characterStatLevel + characterRaceAbilityModifier + characterRaceStatModifier;
+    }
+
+    public int calculateAbilityLevel(WitcherCharacter witcherCharacter, WitcherProfessionSkills witcherProfessionSkill) {
+        int characterProfessionSkillLevel = witcherCharacter.getProfessionSkills().getOrDefault(witcherProfessionSkill, 0);
+        int characterStatLevel = witcherCharacter.getCoreStatistics().getOrDefault(witcherProfessionSkill.baseAbility, 0);
+        int characterRaceStatModifier = witcherCharacter.getRace().stats.getOrDefault(witcherProfessionSkill.baseAbility, 0);
+        return characterProfessionSkillLevel + characterStatLevel + characterRaceStatModifier;
     }
 
     private RpgCharacter convertRpgCharacterEntityToRpgCharacter(RpgCharacterEntity rpgCharacterEntity) {
