@@ -23,15 +23,21 @@ public class DiceService {
     private int diceExpressionParser(String diceExpression) {
         int total = 0;
         StringBuilder parsed = new StringBuilder();
+        boolean addRequired = true;
         for (char character : diceExpression.toCharArray()) {
-            if (character == '+' || character == '-') {
-                total += evaluatePart(parsed.toString());
+            if (character == '+') {
+                total += addRequired ? evaluatePart(parsed.toString()) : -evaluatePart(parsed.toString());
+                addRequired = true;
+                parsed = new StringBuilder();
+            } else if (character == '-') {
+                total += addRequired ? evaluatePart(parsed.toString()) : -evaluatePart(parsed.toString());
+                addRequired = false;
                 parsed = new StringBuilder();
             } else {
                 parsed.append(character);
             }
         }
-        total += rollDice(parsed.toString());
+        total += evaluatePart(parsed.toString());
         return total;
 
     }
