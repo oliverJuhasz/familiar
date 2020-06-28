@@ -8,7 +8,11 @@ public enum WitcherRace {
     DWARF(Map.of(), Map.of(WitcherSkills.PHYSIQUE, 1, WitcherSkills.BUSINESS, 1)),
     ELF(Map.of(), Map.of(WitcherSkills.FINEARTS, 1, WitcherSkills.ARCHERY, 2));
 
+    public final Map<WitcherStats, Integer> stats;
+    public final Map<WitcherSkills, Integer> skills;
 
-    WitcherRace(Map<WitcherStats, Integer> abilities, Map<WitcherSkills, Integer> skills) {
+    WitcherRace(Map<WitcherStats, Integer> stats, Map<WitcherSkills, Integer> skills) {
+        this.stats = stats;
+        this.skills = skills;
     }
 }
