@@ -160,7 +160,7 @@ public class TestDataService {
                         WitcherStats.BODY, 6, WitcherStats.SPEED, 5, WitcherStats.EMPATHY, 7, WitcherStats.CRAFT, 9,
                         WitcherStats.WILL, 6, WitcherStats.LUCK, 3))
                 .coreSkills(remiaCoreSkills)
-                .professionSkills(Map.of(WitcherProfessionSkills.HEALINGHANDS, 1))
+                .professionSkills(Map.of(WitcherProfessionSkills.PATCHJOB, 3))
                 .status(Status.ALIVE)
                 .storyTellerNotes(new ArrayList<>())
                 .created(LocalDateTime.now())
