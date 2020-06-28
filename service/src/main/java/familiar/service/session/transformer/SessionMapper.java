@@ -7,10 +7,12 @@ import familiar.service.session.domain.Session;
 import org.mapstruct.Builder;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring",
         uses = RpgCharacterMapper.class,
-        builder = @Builder(disableBuilder = true))
+        builder = @Builder(disableBuilder = true),
+        unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface SessionMapper {
 
     SessionEntity sessionToSessionEntity(Session session, @Context CycleAvoidingMappingContext context);

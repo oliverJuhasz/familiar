@@ -6,10 +6,12 @@ import familiar.service.character.transformer.RpgCharacterMapper;
 import org.mapstruct.Builder;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring",
         uses = RpgCharacterMapper.class,
-        builder = @Builder(disableBuilder = true))
+        builder = @Builder(disableBuilder = true),
+        unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface CampaignMapper {
 
     CampaignEntity campaignToCampaignEntity(Campaign campaign, @Context CycleAvoidingMappingContext context);

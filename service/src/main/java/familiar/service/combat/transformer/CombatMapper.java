@@ -7,10 +7,12 @@ import familiar.service.combat.domain.Combat;
 import org.mapstruct.Builder;
 import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring",
         uses = RpgCharacterMapper.class,
-        builder = @Builder(disableBuilder = true))
+        builder = @Builder(disableBuilder = true),
+        unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface CombatMapper {
 
     CombatEntity combatToCombatEntity(Combat combat, @Context CycleAvoidingMappingContext context);
