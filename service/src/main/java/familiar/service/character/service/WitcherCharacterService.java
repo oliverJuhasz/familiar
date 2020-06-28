@@ -41,9 +41,11 @@ public class WitcherCharacterService {
     }
 
     public int calculateAbilityLevel(WitcherCharacter witcherCharacter, WitcherSkills witcherSkill) {
-        int skillLevel = witcherCharacter.getCoreSkills().getOrDefault(witcherSkill, 0);
-        int statLevel = witcherCharacter.getCoreStatistics().get(witcherSkill.baseAbility);
-        return skillLevel + statLevel;
+        int characterSkillLevel = witcherCharacter.getCoreSkills().getOrDefault(witcherSkill, 0);
+        int characterStatLevel = witcherCharacter.getCoreStatistics().get(witcherSkill.baseAbility);
+        int characterRaceAbilityModifier = witcherCharacter.getRace().skills.getOrDefault(witcherSkill, 0);
+        int characterRaceStatModifier = witcherCharacter.getRace().stats.getOrDefault(witcherSkill.baseAbility, 0);
+        return characterSkillLevel + characterStatLevel + characterRaceAbilityModifier + characterRaceStatModifier;
     }
 
     private RpgCharacter convertRpgCharacterEntityToRpgCharacter(RpgCharacterEntity rpgCharacterEntity) {
