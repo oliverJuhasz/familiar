@@ -21,18 +21,18 @@ public class WitcherCharacter extends familiar.service.character.domain.RpgChara
 
     @Builder
     public WitcherCharacter(long id, User owner, LocalDateTime created, Name name, Gender gender,
-                            int age, List<Note> storyTellerNotes, Status status, Map<WitcherStats, Integer> coreAbilities,
+                            int age, List<Note> storyTellerNotes, Status status, Map<WitcherStats, Integer> coreStatistics,
                             Map<WitcherSkills, Integer> coreSkills, Map<WitcherProfessionSkills, Integer> professionSkills, WitcherRace race,
                             WitcherProfession profession) {
         super(id, owner, created, name, gender, age, storyTellerNotes, status);
-        this.coreAbilities = coreAbilities;
+        this.coreStatistics = coreStatistics;
         this.coreSkills = coreSkills;
         this.professionSkills = professionSkills;
         this.race = race;
         this.profession = profession;
     }
 
-    private Map<WitcherStats, Integer> coreAbilities;
+    private Map<WitcherStats, Integer> coreStatistics;
     private Map<WitcherSkills, Integer> coreSkills;
     private Map<WitcherProfessionSkills, Integer> professionSkills;
     private WitcherRace race;

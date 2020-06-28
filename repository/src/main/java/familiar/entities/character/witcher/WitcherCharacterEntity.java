@@ -22,11 +22,11 @@ public class WitcherCharacterEntity extends familiar.entities.character.RpgChara
 
     @Builder
     public WitcherCharacterEntity(long id, UserEntity owner, LocalDateTime created, NameEntity nameEntity, String gender,
-                                  int age, List<NoteEntity> storyTellerNotes, String status, Map<String, Integer> coreAbilities,
+                                  int age, List<NoteEntity> storyTellerNotes, String status, Map<String, Integer> coreStatistics,
                                   Map<String, Integer> coreSkills, Map<String, Integer> professionSkills, String race,
                                   String profession) {
         super(id, owner, created, nameEntity, gender, age, storyTellerNotes, status);
-        this.coreAbilities = coreAbilities;
+        this.coreStatistics = coreStatistics;
         this.coreSkills = coreSkills;
         this.professionSkills = professionSkills;
         this.race = race;
@@ -34,10 +34,10 @@ public class WitcherCharacterEntity extends familiar.entities.character.RpgChara
     }
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "`WitcherCharacters_CoreAbilities`", joinColumns = @JoinColumn(name = "`RpgCharacterId`"))
-    @MapKeyColumn(name = "`Ability`", length = 20)
-    @Column(name = "`CoreAbilityValue`")
-    private Map<String, Integer> coreAbilities;
+    @CollectionTable(name = "`WitcherCharacters_CoreStatistics`", joinColumns = @JoinColumn(name = "`RpgCharacterId`"))
+    @MapKeyColumn(name = "`Statistic`", length = 20)
+    @Column(name = "`CoreStatisticValue`")
+    private Map<String, Integer> coreStatistics;
 
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "`WitcherCharacters_CoreSkills`", joinColumns = @JoinColumn(name = "`RpgCharacterId`"))

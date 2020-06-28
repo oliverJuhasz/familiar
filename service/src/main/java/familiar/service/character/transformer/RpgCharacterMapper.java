@@ -49,7 +49,7 @@ public abstract class RpgCharacterMapper {
         WitcherCharacter from = (WitcherCharacter) rpgCharacter;
         RpgCharacterEntity characterEntity = WitcherCharacterEntity.builder()
                 .age(from.getAge())
-                .coreAbilities(convertKeyToString(from.getCoreAbilities()))
+                .coreStatistics(convertKeyToString(from.getCoreStatistics()))
                 .coreSkills(convertKeyToString(from.getCoreSkills()))
                 .created(from.getCreated())
                 .gender(from.getGender().toString())
@@ -82,7 +82,7 @@ public abstract class RpgCharacterMapper {
         WitcherCharacterEntity from = (WitcherCharacterEntity) rpgCharacterEntity;
         RpgCharacter character = WitcherCharacter.builder()
                 .age(from.getAge())
-                .coreAbilities(convertAbilityToKey(from.getCoreAbilities()))
+                .coreStatistics(convertAbilityToKey(from.getCoreStatistics()))
                 .coreSkills(convertCoreSkillToKey(from.getCoreSkills()))
                 .created(from.getCreated())
                 .gender(Gender.valueOf(from.getGender()))

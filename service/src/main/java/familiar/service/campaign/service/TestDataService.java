@@ -156,7 +156,7 @@ public class TestDataService {
                 .race(WitcherRace.ELF)
                 .age(30)
                 .profession(WitcherProfession.CRAFTSMAN)
-                .coreAbilities(Map.of(WitcherStats.INTELLIGENCE, 9, WitcherStats.REFLEXES, 7, WitcherStats.DEXTERITY, 8,
+                .coreStatistics(Map.of(WitcherStats.INTELLIGENCE, 9, WitcherStats.REFLEXES, 7, WitcherStats.DEXTERITY, 8,
                         WitcherStats.BODY, 6, WitcherStats.SPEED, 5, WitcherStats.EMPATHY, 7, WitcherStats.CRAFT, 9,
                         WitcherStats.WILL, 6, WitcherStats.LUCK, 3))
                 .coreSkills(remiaCoreSkills)
@@ -189,7 +189,7 @@ public class TestDataService {
                 .race(WitcherRace.DWARF)
                 .age(331)
                 .profession(WitcherProfession.CRIMINAL)
-                .coreAbilities(Map.of(WitcherStats.INTELLIGENCE, 8, WitcherStats.REFLEXES, 8, WitcherStats.DEXTERITY, 5,
+                .coreStatistics(Map.of(WitcherStats.INTELLIGENCE, 8, WitcherStats.REFLEXES, 8, WitcherStats.DEXTERITY, 5,
                         WitcherStats.BODY, 10, WitcherStats.SPEED, 5, WitcherStats.EMPATHY, 5, WitcherStats.CRAFT, 2,
                         WitcherStats.WILL, 8, WitcherStats.LUCK, 11))
                 .coreSkills(thorimCoreSkills)
@@ -227,7 +227,7 @@ public class TestDataService {
                 .race(WitcherRace.HUMAN)
                 .age(30)
                 .profession(WitcherProfession.MANATARMS)
-                .coreAbilities(Map.of(WitcherStats.INTELLIGENCE, 7,
+                .coreStatistics(Map.of(WitcherStats.INTELLIGENCE, 7,
                         WitcherStats.REFLEXES, 10, WitcherStats.DEXTERITY, 9,
                         WitcherStats.BODY, 10, WitcherStats.SPEED, 8, WitcherStats.EMPATHY, 5, WitcherStats.CRAFT, 2,
                         WitcherStats.WILL, 7, WitcherStats.LUCK, 2))
@@ -263,7 +263,7 @@ public class TestDataService {
                 .race(WitcherRace.WITCHER)
                 .age(70)
                 .profession(WitcherProfession.WITCHER)
-                .coreAbilities(Map.of(WitcherStats.INTELLIGENCE, 10,
+                .coreStatistics(Map.of(WitcherStats.INTELLIGENCE, 10,
                         WitcherStats.REFLEXES, 9, WitcherStats.DEXTERITY, 7,
                         WitcherStats.BODY, 8, WitcherStats.SPEED, 8, WitcherStats.EMPATHY, 1, WitcherStats.CRAFT, 6,
                         WitcherStats.WILL, 10, WitcherStats.LUCK, 3))
@@ -297,7 +297,7 @@ public class TestDataService {
                 .race(WitcherRace.WITCHER)
                 .age(147)
                 .profession(WitcherProfession.DOCTOR)
-                .coreAbilities(Map.of(WitcherStats.INTELLIGENCE, 9,
+                .coreStatistics(Map.of(WitcherStats.INTELLIGENCE, 9,
                         WitcherStats.REFLEXES, 9, WitcherStats.DEXTERITY, 8,
                         WitcherStats.BODY, 5, WitcherStats.SPEED, 8, WitcherStats.EMPATHY, 2, WitcherStats.CRAFT, 7,
                         WitcherStats.WILL, 6, WitcherStats.LUCK, 6))
