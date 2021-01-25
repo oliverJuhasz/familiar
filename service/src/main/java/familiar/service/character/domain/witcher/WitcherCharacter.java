@@ -2,6 +2,7 @@ package familiar.service.character.domain.witcher;
 
 import familiar.service.character.domain.Gender;
 import familiar.service.character.domain.Name;
+import familiar.service.character.domain.RpgCharacter;
 import familiar.service.character.domain.Status;
 import familiar.service.character.domain.witcher.profession.WitcherProfession;
 import familiar.service.character.domain.witcher.profession.WitcherProfessionSkills;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class WitcherCharacter extends familiar.service.character.domain.RpgCharacter {
+public class WitcherCharacter extends RpgCharacter {
 
     @Builder
     public WitcherCharacter(long id, User owner, LocalDateTime created, Name name, Gender gender,
