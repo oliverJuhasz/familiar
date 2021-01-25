@@ -16,6 +16,6 @@ public class CharacterController {
 
     @GetMapping("/characters")
     public WitcherCharacter getCharacters() {
-        return witcherCharacterService.findWitcherCharacterById(1);
+        return witcherCharacterService.findWitcherCharacterById(2);
     }
 }
